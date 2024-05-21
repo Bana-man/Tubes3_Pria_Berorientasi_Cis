@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "DKlfx8DwMuAPaDwJjMveL3Vqo431XO9Q4055oWrhbCqqrjpQGe7TaGonOjw3/6mUUdJrjiInU0bWTWa1ihk4Xg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Tubes3GUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Sean Nugroho\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
+    "C:\\Users\\Sean Nugroho\\.nuget\\packages\\mysqlconnector\\2.3.5\\mysqlconnector.2.3.5.nupkg.sha512",
+    "C:\\Users\\Sean Nugroho\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Sean Nugroho\\.nuget\\packages\\system.diagnostics.diagnosticsource\\7.0.2\\system.diagnostics.diagnosticsource.7.0.2.nupkg.sha512",
+    "C:\\Users\\Sean Nugroho\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\Sean Nugroho\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\Sean Nugroho\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Sean Nugroho\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+  ],
+  "logs": []
+}

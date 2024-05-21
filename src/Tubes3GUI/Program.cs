@@ -21,9 +21,10 @@ namespace Tubes3GUI
             // Use a verbatim string literal to handle file paths correctly
             Bitmap image = new Bitmap("C:/Users/Sean Nugroho/Pictures/ptrr.png");
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            List<char> integerList = Utility.ConvertImageToBinaryIntegers(image);
+            string integerList = Utility.ConvertImageToString(image);
             watch.Stop();
             var elapsedMs = watch.ElapsedMilliseconds;
+            ConnectDB.printNIK();
             // Print the integers
             Debug.WriteLine("Elapsed time: ");
             Debug.WriteLine(elapsedMs);

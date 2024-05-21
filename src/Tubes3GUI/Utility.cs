@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Text;
 
 
 namespace Tubes3GUI
@@ -9,7 +10,7 @@ namespace Tubes3GUI
     public class Utility
     {
 
-        public static List<char> ConvertImageToBinaryIntegers(Bitmap image)
+        public static string ConvertImageToString(Bitmap image)
         {
             // Convert the Bitmap to a byte array
             byte[] imageBytes;
@@ -19,7 +20,7 @@ namespace Tubes3GUI
                 imageBytes = ms.ToArray();
             }
 
-            List<char> characters = new List<char>();
+            StringBuilder stringBuilder = new StringBuilder();
 
             // Process each byte in the byte array
             foreach (byte b in imageBytes)
@@ -32,11 +33,40 @@ namespace Tubes3GUI
                 {
                     string byteSegment = binaryString.Substring(i, 8);
                     int intValue = Convert.ToInt32(byteSegment, 2);
-                    characters.Add((char)intValue);
+                    stringBuilder.Append((char)intValue);
                 }
             }
 
-            return characters;
+            return stringBuilder.ToString();
+        }
+
+        public static Bitmap ConvertStringToImage(string str)
+        {
+            List<byte> imageBytes = new List<byte>();
+
+            // Process each character in the string
+            foreach (char c in str)
+            {
+                // Convert the character to its binary representation
+                string binaryString = Convert.ToString(c, 2).PadLeft(8, '0');
+
+                // Convert the binary string to a byte
+                byte b = Convert.ToByte(binaryString, 2);
+                imageBytes.Add(b);
+            }
+
+            // Convert the byte array to a MemoryStream
+            MemoryStream ms = new MemoryStream(imageBytes.ToArray());
+
+            // Create a Bitmap from the MemoryStream
+            Bitmap image = new Bitmap(ms);
+
+            return image;
+        }
+
+        public static Bitmap LoadBitmapFromFile(string path)
+        {
+            return new Bitmap(path);
         }
     }
 }

@@ -39,6 +39,13 @@ namespace Tubes3GUI
             this.sidikJariMatch = new System.Windows.Forms.PictureBox();
             this.coverUpHasil = new System.Windows.Forms.PictureBox();
             this.TitleLable = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.toggle = new System.Windows.Forms.CheckBox();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.waktuPencarian = new System.Windows.Forms.Label();
+            this.persenCocok = new System.Windows.Forms.Label();
+            this.numberKecocokan = new System.Windows.Forms.Label();
+            this.numberWaktu = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.sidikJariAsal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sidikJariMatch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverUpHasil)).BeginInit();
@@ -57,7 +64,7 @@ namespace Tubes3GUI
             // selectFileButton
             // 
             this.selectFileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectFileButton.Location = new System.Drawing.Point(107, 513);
+            this.selectFileButton.Location = new System.Drawing.Point(54, 513);
             this.selectFileButton.Name = "selectFileButton";
             this.selectFileButton.Size = new System.Drawing.Size(146, 57);
             this.selectFileButton.TabIndex = 1;
@@ -111,11 +118,95 @@ namespace Tubes3GUI
             this.TitleLable.Text = "Aplikasi C# Tubes 3 Strategi Algoritma";
             this.TitleLable.Click += new System.EventHandler(this.label1_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(0, 0);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // toggle
+            // 
+            this.toggle.Appearance = System.Windows.Forms.Appearance.Button;
+            this.toggle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toggle.Location = new System.Drawing.Point(275, 513);
+            this.toggle.Name = "toggle";
+            this.toggle.Size = new System.Drawing.Size(146, 57);
+            this.toggle.TabIndex = 7;
+            this.toggle.Text = "BM";
+            this.toggle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toggle.UseVisualStyleBackColor = true;
+            this.toggle.CheckedChanged += new System.EventHandler(this.toggle_toggled);
+            // 
+            // searchButton
+            // 
+            this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchButton.Location = new System.Drawing.Point(509, 512);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(146, 57);
+            this.searchButton.TabIndex = 8;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.buttonSearch_click);
+            // 
+            // waktuPencarian
+            // 
+            this.waktuPencarian.AutoSize = true;
+            this.waktuPencarian.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.waktuPencarian.Location = new System.Drawing.Point(713, 512);
+            this.waktuPencarian.Name = "waktuPencarian";
+            this.waktuPencarian.Size = new System.Drawing.Size(182, 20);
+            this.waktuPencarian.TabIndex = 9;
+            this.waktuPencarian.Text = "Waktu Pencarian            :";
+            this.waktuPencarian.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // persenCocok
+            // 
+            this.persenCocok.AutoSize = true;
+            this.persenCocok.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.persenCocok.Location = new System.Drawing.Point(713, 563);
+            this.persenCocok.Name = "persenCocok";
+            this.persenCocok.Size = new System.Drawing.Size(185, 20);
+            this.persenCocok.TabIndex = 10;
+            this.persenCocok.Text = "Persentase Kecocokan  :";
+            this.persenCocok.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // numberKecocokan
+            // 
+            this.numberKecocokan.AutoSize = true;
+            this.numberKecocokan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numberKecocokan.Location = new System.Drawing.Point(904, 563);
+            this.numberKecocokan.Name = "numberKecocokan";
+            this.numberKecocokan.Size = new System.Drawing.Size(48, 20);
+            this.numberKecocokan.TabIndex = 11;
+            this.numberKecocokan.Text = "xxx %";
+            this.numberKecocokan.Click += new System.EventHandler(this.label1_Click_2);
+            // 
+            // numberWaktu
+            // 
+            this.numberWaktu.AutoSize = true;
+            this.numberWaktu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numberWaktu.Location = new System.Drawing.Point(904, 513);
+            this.numberWaktu.Name = "numberWaktu";
+            this.numberWaktu.Size = new System.Drawing.Size(55, 20);
+            this.numberWaktu.TabIndex = 13;
+            this.numberWaktu.Text = "xxx ms";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1139, 678);
+            this.Controls.Add(this.numberWaktu);
+            this.Controls.Add(this.numberKecocokan);
+            this.Controls.Add(this.persenCocok);
+            this.Controls.Add(this.waktuPencarian);
+            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.toggle);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.TitleLable);
             this.Controls.Add(this.coverUpHasil);
             this.Controls.Add(this.sidikJariMatch);
@@ -138,6 +229,10 @@ namespace Tubes3GUI
         private System.Windows.Forms.Button selectFileButton;
         private System.Windows.Forms.PictureBox sidikJariAsal;
         private System.Windows.Forms.PictureBox sidikJariMatch;
+        private int uwuWhatsThis = 0;
+        private long waktuEksekusi = -1;
+        private long tingkatKecocokan = -1;
+        public string sidikJariFrom = "";
        
         //private string image
 
@@ -148,6 +243,14 @@ namespace Tubes3GUI
 
         private PictureBox coverUpHasil;
         private Label TitleLable;
+        private CheckBox checkBox1;
+        private CheckBox toggle;
+        //kalau togglenya checked berarti menggunakan algoritma BM
+        private Button searchButton;
+        private Label waktuPencarian;
+        private Label persenCocok;
+        private Label numberKecocokan;
+        private Label numberWaktu;
     }
 }
 

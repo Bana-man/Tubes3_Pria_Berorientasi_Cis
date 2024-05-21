@@ -44,12 +44,72 @@ namespace Tubes3GUI
             openFileDialog1.FilterIndex = 2;
             openFileDialog1.ShowDialog();
             if (openFileDialog1.FileName != "")
-            { changeAsalImage(openFileDialog1.FileName); }
-            else
-            { changeAsalImage("C:/Users/Sean Nugroho/Pictures/OCKadiv.png"); }
+            { 
+                changeAsalImage(openFileDialog1.FileName);
+                Bitmap imageSidikJariAsal = new Bitmap(openFileDialog1.FileName);
+                this.sidikJariFrom = Utility.ConvertImageToString(imageSidikJariAsal);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+            if(this.uwuWhatsThis == 10)
+            {
+                this.TitleLable.Text = "wow an easter egg";
+                this.uwuWhatsThis = 0;
+            } else
+            {
+                this.uwuWhatsThis += 1;
+            }
+            
+        }
+
+        private void toggle_toggled(object sender, EventArgs e)
+        {
+            if (this.toggle.Checked) 
+            {
+                this.toggle.Text = "KMP";
+            }
+            else
+            {
+                this.toggle.Text = "BM";
+            }
+            
+
+        }
+
+        private void buttonSearch_click(object sender, EventArgs e)
+        {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            if (this.toggle.Checked) // if using KMP
+            {
+                Debug.WriteLine("Doing KMP");
+            }
+            else // if using BM
+            {
+                Debug.WriteLine("Doing BM");
+            }
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            this.waktuEksekusi = elapsedMs;
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_3(object sender, EventArgs e)
         {
 
         }
