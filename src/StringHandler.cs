@@ -6,26 +6,6 @@ namespace StringHandler
 {
     class LCS
     {
-        static int isEqualRgx(string regex, string normal) //
-        {
-            // if regex char optional
-            var a = Regex.parseRegex(regex);
-            if (a.Item2) 
-            {
-                if (a.Item1.Contains(normal)) { return -1; } // equal
-
-                return -2; // not equal
-            }
-
-            // if regex char not optional
-            else
-            {
-                if (a.Item1.Contains(normal)) { return 0; } // equal
-
-                return 1; // not equal
-            }
-        }
-
         static List<int> copyListInt(List<int> list)
         {
             List<int> newList = new List<int>(list.Count);
@@ -51,12 +31,12 @@ namespace StringHandler
                 matchIdx = new List<int>();
                 for (int idx2 = 1; idx2 < m + 1; idx2++)
                 {
-                    switch (isEqualRgx(regex[idx1 - 1], normal[idx2 - 1]))
+                    switch (Regex.isEqualRgx(regex[idx1 - 1], normal[idx2 - 1]))
                     {
-                        case 1: // not equal
+                        case -1: // not equal
                             cur[idx2] = Math.Max(cur[idx2 - 1], prev[idx2]);
                             break;
-                        case -1:
+                        case 1:
                         case -2:
                             if (prevMatchIdx.Contains(0)) // case vokal diawal
                             {
@@ -86,14 +66,14 @@ namespace StringHandler
             return cur[m];
         }
 
-        static void Main()
-        {
-            string strs = "acaaBnxx man da best";
-            string[] rgx = Regex.strToRgx(strs.ToLower());
-            Console.WriteLine(rgx);
-            string[] str = { "b", "n", "4", " ", "m", "x", "n", " ", "d", "a", " ", "b", "e", "s", "t" };
-            Console.WriteLine(LCS.LongestCommonSubsequence(rgx, str));
-        }
+        //static void Main()
+        //{
+        //    string strs = "acaaBnxx man da best";
+        //    string[] rgx = Regex.strToRgx(strs.ToLower());
+        //    Console.WriteLine(rgx);
+        //    string[] str = { "b", "n", "4", " ", "m", "x", "n", " ", "d", "a", " ", "b", "e", "s", "t" };
+        //    Console.WriteLine(LCS.LongestCommonSubsequence(rgx, str));
+        //}
     }
 
     class BM
@@ -118,7 +98,7 @@ namespace StringHandler
             int j = m - 1;
             while (i <= n - 1)
             {
-                if (pattern[j] == text[i])
+                if (Regex.isEqualRgx(pattern[j], text[i]) >= 0) // equal
                 {
                     if (j == 0)
                         return i; // match
@@ -141,10 +121,10 @@ namespace StringHandler
             };
             return -1; // no match
         }
-        //static void Main()
-        //{
-        //    Console.WriteLine(BMMatch(Regex.strToList("ascnwivcsjevhbdf"), Regex.strToRgx("jaevah")));
-        //}
+        static void Main()
+        {
+            Console.WriteLine(BMMatch(Regex.strToList("ascnwivcasjevahbdf"), Regex.strToRgx("csjaeviah")));
+        }
     }
     class Regex
     {
@@ -206,6 +186,26 @@ namespace StringHandler
 
             string[] strings = str.Split('|');
             return (strings, isOptional);
+        }
+
+        public static int isEqualRgx(string regex, string normal) //
+        {
+            // if regex char optional
+            var a = Regex.parseRegex(regex);
+            if (a.Item2)
+            {
+                if (a.Item1.Contains(normal)) { return 1; } // equal
+
+                return -2; // not equal
+            }
+
+            // if regex char not optional
+            else
+            {
+                if (a.Item1.Contains(normal)) { return 0; } // equal
+
+                return -1; // not equal
+            }
         }
 
         //static void Main()
