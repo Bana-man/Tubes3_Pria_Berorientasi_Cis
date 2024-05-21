@@ -6,72 +6,81 @@ namespace StringHandler
 {
     class LCS
     {
-        static int isEqualRgx(string regex, string normal, List<int> matchIdx, int normalIdx) //
+        static int isEqualRgx(string regex, string normal) //
         {
-            // if using regex, parse (...)
-            if (regex.Length > 2)
-            {
-                regex = regex.Substring(1, regex.Length - 2);
-            }
-
             // if regex char optional
-            if (regex[regex.Length - 1] == '?') 
-            { 
-                if (matchIdx.Contains(normalIdx))
-                    return 1; 
-                else
-                    return -1;
+            var a = Regex.parseRegex(regex);
+            if (a.Item2) 
+            {
+                if (a.Item1.Contains(normal)) { return -1; } // equal
+
+                return -2; // not equal
             }
 
+            // if regex char not optional
             else
             {
-                string[] choices = regex.Split('|');
-                foreach (var choice in choices)
-                {
-                    if (choice == normal) { return 0; }
-                }
-                return -1;
+                if (a.Item1.Contains(normal)) { return 0; } // equal
+
+                return 1; // not equal
             }
         }
 
-        static int[] copyListInt(int[] list)
+        static List<int> copyListInt(List<int> list)
         {
-            int[] newList = new int[list.Length];
-            for (var i = 0; i < list.Length; i++)
+            List<int> newList = new List<int>(list.Count);
+            for (var i = 0; i < list.Count; i++)
             {
-                newList[i] = list[i];
+                newList.Add(list[i]);
             }
             return newList;
         }
         static int LongestCommonSubsequence(string[] regex, string[] normal)
         {
-            List<int> matchIdx = new List<int>();
+            List<int> matchIdx;
+            List<int> prevMatchIdx = new List<int>(); prevMatchIdx.Add(0);
             int n = regex.Length;
             int m = normal.Length;
             // initializing 2 arrays of size m
-            int[] prev = new int[m + 1];
-            int[] cur = new int[m + 1];
-            for (int idx2 = 0; idx2 < m + 1; idx2++)
-                cur[idx2] = 0;
+            List<int> cur = new List<int>(m + 1) { };
+            List<int> prev = new List<int>(m + 1) { };
+            for (int idx2 = 0; idx2 < m + 1; idx2++) { cur.Add(0); prev.Add(0); }
+
             for (int idx1 = 1; idx1 < n + 1; idx1++)
             {
+                matchIdx = new List<int>();
                 for (int idx2 = 1; idx2 < m + 1; idx2++)
                 {
-                    switch (isEqualRgx(regex[idx1 - 1], normal[idx2 - 1], matchIdx, idx2 - 1))
+                    switch (isEqualRgx(regex[idx1 - 1], normal[idx2 - 1]))
                     {
-                        case -1: // not equal
-                            cur[idx2] = 0 + Math.Max(cur[idx2 - 1], prev[idx2]);
+                        case 1: // not equal
+                            cur[idx2] = Math.Max(cur[idx2 - 1], prev[idx2]);
+                            break;
+                        case -1:
+                        case -2:
+                            if (prevMatchIdx.Contains(0)) // case vokal diawal
+                            {
+                                cur[0] = 1 + prev[0]; cur[1] = 1 + prev[1];
+                                matchIdx.Add(0);
+                                prevMatchIdx.Remove(0);
+                            }
+                            if (prevMatchIdx.Contains(idx2)) // equal & optional
+                            {
+                                cur[idx2] = 1 + prev[idx2];
+                                matchIdx.Add(idx2);
+                            }
+                            else
+                            {
+                                cur[idx2] = Math.Max(cur[idx2 - 1], prev[idx2]);
+                            }
                             break;
                         case 0: // equal & not optional
                             cur[idx2] = 1 + prev[idx2 - 1];
-                            matchIdx.Add(idx2 - 1);
-                            break;
-                        case 1:
-                            cur[idx2] = 1 + prev[idx2];
-                            matchIdx.Add(idx2 - 1);
+                            matchIdx.Add(idx2);
                             break;
                     }
                 }
+                if (matchIdx.Count() != 0) { prevMatchIdx = copyListInt(matchIdx); }
                 prev = copyListInt(cur);
             }
             return cur[m];
@@ -79,18 +88,64 @@ namespace StringHandler
 
         static void Main()
         {
-            string strs = "aBnxx man da best";
-            string[] rgx = Regex.StrToRgx(strs.ToLower());
+            string strs = "acaaBnxx man da best";
+            string[] rgx = Regex.strToRgx(strs.ToLower());
             Console.WriteLine(rgx);
-            string[] str = { "b", "n", "4", " ", "m", "a", "n", " ", "d", "a", " ", "b", "e", "s", "t" };
+            string[] str = { "b", "n", "4", " ", "m", "x", "n", " ", "d", "a", " ", "b", "e", "s", "t" };
             Console.WriteLine(LCS.LongestCommonSubsequence(rgx, str));
-            //for (var i = 0; i < strs.Length; i++)
-            //{
-            //    Console.WriteLine(Regex.StrToRgx(strs.ToLower())[i]);
-            //}
         }
     }
 
+    class BM
+    {
+        private static int[] buildLast(String[] pattern)
+        {
+            int[] last = new int[129]; // ASCII char set || 128 for optional char
+            for (int i = 0; i < 129; i++)
+                last[i] = -1; // initialize array
+            for (int i = 0; i < pattern.Length; i++)
+                if (Regex.isOptional(pattern[i])) { last[128] = i; } // !!!Belum cek optionalitas
+                else { last[pattern[i][0]] = i; }
+            return last;
+        }
+        public static int BMMatch(String[] text,String[] pattern)
+        {
+            int[] last = buildLast(pattern);
+            int n = text.Length;
+            int m = pattern.Length;
+            int i = 0;
+
+            int j = m - 1;
+            while (i <= n - 1)
+            {
+                if (pattern[j] == text[i])
+                {
+                    if (j == 0)
+                        return i; // match
+                    else
+                    { // looking-glass technique
+                        if (i == 0) { i = i + m - j; j = m - 1; }
+                        else { j--; i--; }
+                    }
+                }
+                else
+                { // character jump technique
+                    if (Regex.isOptional(pattern[j])) { j--; }
+                    else
+                    {
+                        int lo = Math.Max(last[text[i][0]], last[128]); //last occ
+                        i = i + m - Math.Min(j, 1 + lo);
+                        j = m - 1;
+                    }
+                }
+            };
+            return -1; // no match
+        }
+        //static void Main()
+        //{
+        //    Console.WriteLine(BMMatch(Regex.strToList("ascnwivcsjevhbdf"), Regex.strToRgx("jaevah")));
+        //}
+    }
     class Regex
     {
         private static Dictionary <string, string> dict =
@@ -107,7 +162,7 @@ namespace StringHandler
                                 {"t", "(t|7)"},
                                 {"u", "((u)?)"},
                                 {"z", "(z|2)"} };
-        public static string[] StrToRgx(string str)
+        public static string[] strToRgx(string str)
         {
             string[] newStr = new string[str.Length];
             for (var i = 0; i < str.Length; i++)
@@ -124,6 +179,33 @@ namespace StringHandler
                 newStr[i] = value;
             }
             return newStr;
+        }
+
+        public static bool isOptional(string str)
+        {
+            if (str.Length == 1) return false;
+            if (str[str.Length - 2] == '?') return true; 
+            return false;
+        }
+
+        public static string[] strToList(string str)
+        {
+            string[] strings = new string[str.Length];
+            for (var i = 0; i < str.Length; i++)
+            {
+                strings[i] = str[i].ToString();
+            }
+            return strings;
+        }
+
+        public static (string[], bool) parseRegex(string str)
+        {
+            bool isOptional = false;
+            if (str.Length > 1) { str = str.Substring(1, str.Length - 2); }
+            if (str[str.Length - 1] == '?') { isOptional = true; str = str.Substring(1, str.Length - 3); }
+
+            string[] strings = str.Split('|');
+            return (strings, isOptional);
         }
 
         //static void Main()
