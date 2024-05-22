@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -54,9 +55,11 @@ namespace Tubes3GUI
             // listHasil
             // 
             this.listHasil.FormattingEnabled = true;
-            this.listHasil.Location = new System.Drawing.Point(817, 139);
+            this.listHasil.ItemHeight = 25;
+            this.listHasil.Location = new System.Drawing.Point(1634, 267);
+            this.listHasil.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.listHasil.Name = "listHasil";
-            this.listHasil.Size = new System.Drawing.Size(224, 329);
+            this.listHasil.Size = new System.Drawing.Size(444, 629);
             this.listHasil.TabIndex = 0;
             this.listHasil.Visible = false;
             this.listHasil.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -64,9 +67,10 @@ namespace Tubes3GUI
             // selectFileButton
             // 
             this.selectFileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectFileButton.Location = new System.Drawing.Point(54, 513);
+            this.selectFileButton.Location = new System.Drawing.Point(108, 987);
+            this.selectFileButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.selectFileButton.Name = "selectFileButton";
-            this.selectFileButton.Size = new System.Drawing.Size(146, 57);
+            this.selectFileButton.Size = new System.Drawing.Size(292, 110);
             this.selectFileButton.TabIndex = 1;
             this.selectFileButton.Text = "Select Finger Print";
             this.selectFileButton.UseVisualStyleBackColor = true;
@@ -76,9 +80,10 @@ namespace Tubes3GUI
             // 
             this.sidikJariAsal.BackColor = System.Drawing.SystemColors.ControlDark;
             this.sidikJariAsal.Image = global::Tubes3GUI.Properties.Resources.masukan;
-            this.sidikJariAsal.Location = new System.Drawing.Point(71, 139);
+            this.sidikJariAsal.Location = new System.Drawing.Point(142, 267);
+            this.sidikJariAsal.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.sidikJariAsal.Name = "sidikJariAsal";
-            this.sidikJariAsal.Size = new System.Drawing.Size(224, 329);
+            this.sidikJariAsal.Size = new System.Drawing.Size(448, 633);
             this.sidikJariAsal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.sidikJariAsal.TabIndex = 2;
             this.sidikJariAsal.TabStop = false;
@@ -88,9 +93,10 @@ namespace Tubes3GUI
             // 
             this.sidikJariMatch.BackColor = System.Drawing.SystemColors.ControlDark;
             this.sidikJariMatch.Image = global::Tubes3GUI.Properties.Resources.match;
-            this.sidikJariMatch.Location = new System.Drawing.Point(449, 139);
+            this.sidikJariMatch.Location = new System.Drawing.Point(898, 267);
+            this.sidikJariMatch.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.sidikJariMatch.Name = "sidikJariMatch";
-            this.sidikJariMatch.Size = new System.Drawing.Size(224, 329);
+            this.sidikJariMatch.Size = new System.Drawing.Size(448, 633);
             this.sidikJariMatch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.sidikJariMatch.TabIndex = 3;
             this.sidikJariMatch.TabStop = false;
@@ -100,9 +106,10 @@ namespace Tubes3GUI
             // 
             this.coverUpHasil.BackColor = System.Drawing.SystemColors.ControlDark;
             this.coverUpHasil.Image = global::Tubes3GUI.Properties.Resources.biodata;
-            this.coverUpHasil.Location = new System.Drawing.Point(817, 139);
+            this.coverUpHasil.Location = new System.Drawing.Point(1634, 267);
+            this.coverUpHasil.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.coverUpHasil.Name = "coverUpHasil";
-            this.coverUpHasil.Size = new System.Drawing.Size(224, 329);
+            this.coverUpHasil.Size = new System.Drawing.Size(448, 633);
             this.coverUpHasil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.coverUpHasil.TabIndex = 4;
             this.coverUpHasil.TabStop = false;
@@ -111,9 +118,10 @@ namespace Tubes3GUI
             // 
             this.TitleLable.AutoSize = true;
             this.TitleLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleLable.Location = new System.Drawing.Point(138, 44);
+            this.TitleLable.Location = new System.Drawing.Point(276, 85);
+            this.TitleLable.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.TitleLable.Name = "TitleLable";
-            this.TitleLable.Size = new System.Drawing.Size(843, 55);
+            this.TitleLable.Size = new System.Drawing.Size(1679, 108);
             this.TitleLable.TabIndex = 5;
             this.TitleLable.Text = "Aplikasi C# Tubes 3 Strategi Algoritma";
             this.TitleLable.Click += new System.EventHandler(this.label1_Click);
@@ -122,8 +130,9 @@ namespace Tubes3GUI
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(0, 0);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.Size = new System.Drawing.Size(150, 29);
             this.checkBox1.TabIndex = 6;
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -132,9 +141,10 @@ namespace Tubes3GUI
             // 
             this.toggle.Appearance = System.Windows.Forms.Appearance.Button;
             this.toggle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggle.Location = new System.Drawing.Point(275, 513);
+            this.toggle.Location = new System.Drawing.Point(550, 987);
+            this.toggle.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.toggle.Name = "toggle";
-            this.toggle.Size = new System.Drawing.Size(146, 57);
+            this.toggle.Size = new System.Drawing.Size(292, 110);
             this.toggle.TabIndex = 7;
             this.toggle.Text = "BM";
             this.toggle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -144,9 +154,10 @@ namespace Tubes3GUI
             // searchButton
             // 
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(509, 512);
+            this.searchButton.Location = new System.Drawing.Point(1018, 985);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(146, 57);
+            this.searchButton.Size = new System.Drawing.Size(292, 110);
             this.searchButton.TabIndex = 8;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -156,9 +167,10 @@ namespace Tubes3GUI
             // 
             this.waktuPencarian.AutoSize = true;
             this.waktuPencarian.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.waktuPencarian.Location = new System.Drawing.Point(713, 512);
+            this.waktuPencarian.Location = new System.Drawing.Point(1426, 985);
+            this.waktuPencarian.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.waktuPencarian.Name = "waktuPencarian";
-            this.waktuPencarian.Size = new System.Drawing.Size(182, 20);
+            this.waktuPencarian.Size = new System.Drawing.Size(379, 37);
             this.waktuPencarian.TabIndex = 9;
             this.waktuPencarian.Text = "Waktu Pencarian            :";
             this.waktuPencarian.Click += new System.EventHandler(this.label1_Click_1);
@@ -167,9 +179,10 @@ namespace Tubes3GUI
             // 
             this.persenCocok.AutoSize = true;
             this.persenCocok.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.persenCocok.Location = new System.Drawing.Point(713, 563);
+            this.persenCocok.Location = new System.Drawing.Point(1426, 1083);
+            this.persenCocok.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.persenCocok.Name = "persenCocok";
-            this.persenCocok.Size = new System.Drawing.Size(185, 20);
+            this.persenCocok.Size = new System.Drawing.Size(371, 37);
             this.persenCocok.TabIndex = 10;
             this.persenCocok.Text = "Persentase Kecocokan  :";
             this.persenCocok.Click += new System.EventHandler(this.label2_Click);
@@ -178,9 +191,10 @@ namespace Tubes3GUI
             // 
             this.numberKecocokan.AutoSize = true;
             this.numberKecocokan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numberKecocokan.Location = new System.Drawing.Point(904, 563);
+            this.numberKecocokan.Location = new System.Drawing.Point(1808, 1083);
+            this.numberKecocokan.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.numberKecocokan.Name = "numberKecocokan";
-            this.numberKecocokan.Size = new System.Drawing.Size(48, 20);
+            this.numberKecocokan.Size = new System.Drawing.Size(99, 37);
             this.numberKecocokan.TabIndex = 11;
             this.numberKecocokan.Text = "xxx %";
             this.numberKecocokan.Click += new System.EventHandler(this.label1_Click_2);
@@ -189,17 +203,18 @@ namespace Tubes3GUI
             // 
             this.numberWaktu.AutoSize = true;
             this.numberWaktu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numberWaktu.Location = new System.Drawing.Point(904, 513);
+            this.numberWaktu.Location = new System.Drawing.Point(1808, 987);
+            this.numberWaktu.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.numberWaktu.Name = "numberWaktu";
-            this.numberWaktu.Size = new System.Drawing.Size(55, 20);
+            this.numberWaktu.Size = new System.Drawing.Size(114, 37);
             this.numberWaktu.TabIndex = 13;
             this.numberWaktu.Text = "xxx ms";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 678);
+            this.ClientSize = new System.Drawing.Size(2278, 1304);
             this.Controls.Add(this.numberWaktu);
             this.Controls.Add(this.numberKecocokan);
             this.Controls.Add(this.persenCocok);
@@ -213,6 +228,7 @@ namespace Tubes3GUI
             this.Controls.Add(this.sidikJariAsal);
             this.Controls.Add(this.selectFileButton);
             this.Controls.Add(this.listHasil);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.sidikJariAsal)).EndInit();
@@ -233,6 +249,8 @@ namespace Tubes3GUI
         private long waktuEksekusi = -1;
         private long tingkatKecocokan = -1;
         public string sidikJariFrom = "";
+        public static List<(string,string)> dbSidikJari = new List<(string, string)>();
+        public string associatedName = "";
        
         //private string image
 

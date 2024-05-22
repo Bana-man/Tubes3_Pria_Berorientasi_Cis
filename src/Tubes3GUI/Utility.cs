@@ -21,20 +21,21 @@ namespace Tubes3GUI
             }
 
             StringBuilder stringBuilder = new StringBuilder();
-
+            
             // Process each byte in the byte array
-            foreach (byte b in imageBytes)
+            for (var i = 0; i < imageBytes.Length; i += 2)
             {
                 // Convert the byte to its binary representation
-                string binaryString = Convert.ToString(b, 2).PadLeft(8, '0');
+                char binaryString = (char) imageBytes[i];
+                stringBuilder.Append(binaryString);
 
                 // Split the binary string into 8-bit segments and convert to integers
-                for (int i = 0; i < binaryString.Length; i += 8)
-                {
-                    string byteSegment = binaryString.Substring(i, 8);
-                    int intValue = Convert.ToInt32(byteSegment, 2);
-                    stringBuilder.Append((char)intValue);
-                }
+                //for (int i = 0; i < binaryString.Length; i += 8)
+                //{
+                //    string byteSegment = binaryString.Substring(i, 8);
+                //    int intValue = Convert.ToInt32(byteSegment, 2);
+                //    stringBuilder.Append((char)intValue);
+                //}
             }
 
             return stringBuilder.ToString();
@@ -48,10 +49,10 @@ namespace Tubes3GUI
             foreach (char c in str)
             {
                 // Convert the character to its binary representation
-                string binaryString = Convert.ToString(c, 2).PadLeft(8, '0');
+                //string binaryString = Convert.ToString(c, 2).PadLeft(8, '0');
 
                 // Convert the binary string to a byte
-                byte b = Convert.ToByte(binaryString, 2);
+                byte b = Convert.ToByte(c);
                 imageBytes.Add(b);
             }
 

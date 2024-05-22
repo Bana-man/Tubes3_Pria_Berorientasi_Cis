@@ -130,6 +130,9 @@
     <Compile Include="Class2.cs">
       <DependentUpon>Class2.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegexHandler.cs">
+      <DependentUpon>RegexHandler.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -167,6 +170,9 @@
     <Content Include="Images\biodata.png" />
     <Content Include="Images\masukan.png" />
     <Content Include="Images\match.png" />
+    <Content Include="Images\nomatch.png" />
+    <Content Include="Resources\nomatch.png" />
+    <None Include="Resources\Screenshot 2024-05-22 210641.png" />
     <None Include="Resources\masukan.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

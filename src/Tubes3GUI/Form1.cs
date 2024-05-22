@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Text.RegularExpressions;
+using StringHandler;
 
 namespace Tubes3GUI
 {
@@ -80,16 +82,88 @@ namespace Tubes3GUI
 
         private void buttonSearch_click(object sender, EventArgs e)
         {
+            float benchMark = 0.5f;
+            int value = -1;
+            string[] sesuatu = RegexPnySendiri.strToList(sidikJariFrom);
             var watch = System.Diagnostics.Stopwatch.StartNew();
+            Debug.WriteLine("CHECKPOINT 1");
             if (this.toggle.Checked) // if using KMP
             {
                 Debug.WriteLine("Doing KMP");
+                int idxKMP = 0;
+                for (int i = 0; i < dbSidikJari.Count; i++)
+                {
+                    value = kmp.kmpmatch(sidikJariFrom, dbSidikJari[i].Item1);
+                    if (value > -1)
+                    {
+                        idxKMP = i;
+                        break;
+                    }
+                }
+                if(value > -1)
+                {
+                    // show kecocokan 100%, give data
+                    this.associatedName = dbSidikJari[idxKMP].Item2;
+                    this.sidikJariMatch.Image = Utility.ConvertStringToImage(dbSidikJari[idxKMP].Item1);
+                    numberKecocokan.Text = "100 %";
+                }
             }
             else // if using BM
             {
                 Debug.WriteLine("Doing BM");
+                int idxBM = 0;
+                for (int i = 0; i < dbSidikJari.Count; i++)
+                {
+                    value = BoyerMoore.BMMatch(sesuatu, RegexPnySendiri.strToList(dbSidikJari[i].Item1));
+                    if (value > -1)
+                    {
+                        idxBM = i;
+                        break;
+                    }
+                }
+                Debug.WriteLine("CHECKPOINT 2");
+                if (value > -1)
+                {
+                    // show kecocokan 100%, give data
+                    this.associatedName = dbSidikJari[idxBM].Item2;
+                    this.sidikJariMatch.Image = Utility.ConvertStringToImage(dbSidikJari[idxBM].Item1);
+                    numberKecocokan.Text = "100 %";
+                }
+                Debug.WriteLine("CHECKPOINT 3");
+            }
+            if (value == -1)
+            {
+                int lcsValue = 0;
+                int idx = 0;
+                Debug.WriteLine("CHECKPOINT 4");
+                for (int i = 0; i < dbSidikJari.Count; i++)
+                {
+                    int temp = LCS.LongestCommonSubsequence(sesuatu, RegexPnySendiri.strToList(dbSidikJari[i].Item1));
+                    Debug.WriteLine(temp);
+                    if (temp > lcsValue)
+                    {
+                        lcsValue = temp;
+                        idx = i;
+                    }
+                }
+                Debug.WriteLine("CHECKPOINT 5");
+                float persentaseKemiripan = lcsValue / sesuatu.Length;
+                if (persentaseKemiripan > benchMark)
+                {
+                    // show kemiripan, display si gambarnya
+                    this.associatedName = dbSidikJari[idx].Item2;
+                    this.sidikJariMatch.Image = Utility.ConvertStringToImage(dbSidikJari[idx].Item1);
+                    numberKecocokan.Text = persentaseKemiripan.ToString() + " %";
+                }
+                else
+                {
+                    // show no match
+                    this.sidikJariMatch.Image = Properties.Resources.nomatch;
+
+                }
             }
             watch.Stop();
+            Debug.WriteLine("CHECKPOINT 6");
             var elapsedMs = watch.ElapsedMilliseconds;
             this.waktuEksekusi = elapsedMs;
         }
