@@ -68,6 +68,21 @@ namespace Tubes3GUI
             cn.Close();
         }
 
+        public static void setDataBiodata()
+        {
+            var cn = new MySqlConnector.MySqlConnection(connStr);
+            cn.Open();
+            string query = "SELECT * FROM biodata";
+            var cmd = new MySqlConnector.MySqlCommand(query, cn);
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Form1.dbBiodata.Add(new Orang(reader["NIK"].ToString(), reader["nama"].ToString(), reader["tempat_lahir"].ToString(), reader["tanggal_lahir"].ToString()
+                    , reader["jenis_kelamin"].ToString(), reader["golongan_darah"].ToString(), reader["alamat"].ToString(), reader["agama"].ToString(),
+                    reader["status_perkawinan"].ToString(), reader["pekerjaan"].ToString(), reader["kewarganegaraan"].ToString()));
+            }
+        }
+
         public static void printNamafromBiodata()
         {
             //string connStr = "Server=localhost;User ID = root; Password=;Database=stima";
@@ -83,12 +98,12 @@ namespace Tubes3GUI
         }
 
         //Buat masukin data sidik jari, testing purposes
-        public static string[] LoadFirst7ImagesAsBitmap(string folderPath)
+        public static string[] LoadFirst10ImagesAsBitmap(string folderPath)
         {
             // Get all image files from the folder
             string[] imageFiles = Directory.GetFiles(folderPath, "*.*")
                                             .Where(f => f.EndsWith(".jpg") || f.EndsWith(".jpeg") || f.EndsWith(".png") || f.EndsWith(".BMP"))
-                                            .Take(7)
+                                            .Take(10)
                                             .ToArray();
 
             // Create an array to hold the Bitmap objects

@@ -27,14 +27,14 @@ namespace Tubes3GUI
             Debug.WriteLine(integerList);
             //watch.Stop();
             //var elapsedMs = watch.ElapsedMilliseconds;
-            //string[] names = { "Emma Martinez", "Budi Budiman", "John Doe", "Daniel Rodriguez", "Jane Smith", "Sophia Garcia", "Michael Johnson" };
-            //string[] fingerPrints = ConnectDB.LoadFirst7ImagesAsBitmap("C:/Users/Sean Nugroho/Documents/fingerprintsamples");
+            //string[] names = { "Emma Martinez", "Budi Budiman", "John Doe", "Daniel Rodriguez", "Jane Smith", "Sophia Garcia", "Michael Johnson", "Matthew Hernandez","Isabella Gonzalez", "Emily Davis" };
+            //string[] fingerPrints = ConnectDB.LoadFirst10ImagesAsBitmap("C:/Users/Sean Nugroho/Documents/fingerprintsamples");
             //for (int i = 0; i < fingerPrints.Length; i++)
             //{
             //    ConnectDB.InsertSidikJari(fingerPrints[i], names[i]);
             //}
             ConnectDB.setDataFingerprint();
-            
+            ConnectDB.setDataBiodata();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

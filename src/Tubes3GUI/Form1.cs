@@ -49,7 +49,7 @@ namespace Tubes3GUI
             { 
                 changeAsalImage(openFileDialog1.FileName);
                 Bitmap imageSidikJariAsal = new Bitmap(openFileDialog1.FileName);
-                this.sidikJariFrom = Utility.ConvertImageToString(imageSidikJariAsal);
+                this.sidikJariFrom = Utility.makeSubstringOfImage(imageSidikJariAsal);
             }
         }
 
@@ -80,11 +80,27 @@ namespace Tubes3GUI
 
         }
 
+        public static void PrintDictionaryContents(Dictionary<string, float> dictionary)
+        {
+            if (dictionary == null || dictionary.Count == 0)
+            {
+                Console.WriteLine("The dictionary is empty or null.");
+                return;
+            }
+
+            foreach (var kvp in dictionary)
+            {
+                Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
+            }
+        }
+
         private void buttonSearch_click(object sender, EventArgs e)
         {
-            float benchMark = 0.5f;
+            kemiripanMap.Clear();
+            float benchMark = 50;
             int value = -1;
             string[] sesuatu = RegexPnySendiri.strToList(sidikJariFrom);
+            
             var watch = System.Diagnostics.Stopwatch.StartNew();
             Debug.WriteLine("CHECKPOINT 1");
             if (this.toggle.Checked) // if using KMP
@@ -96,16 +112,11 @@ namespace Tubes3GUI
                     value = kmp.kmpmatch(sidikJariFrom, dbSidikJari[i].Item1);
                     if (value > -1)
                     {
-                        idxKMP = i;
+                        Debug.WriteLine("KMP ditemukan");
+                        kemiripanMap.Add(dbSidikJari[i].Item2, 100);
+                        this.associatedName = dbSidikJari[i].Item2;
                         break;
                     }
-                }
-                if(value > -1)
-                {
-                    // show kecocokan 100%, give data
-                    this.associatedName = dbSidikJari[idxKMP].Item2;
-                    this.sidikJariMatch.Image = Utility.ConvertStringToImage(dbSidikJari[idxKMP].Item1);
-                    numberKecocokan.Text = "100 %";
                 }
             }
             else // if using BM
@@ -117,55 +128,191 @@ namespace Tubes3GUI
                     value = BoyerMoore.BMMatch(sesuatu, RegexPnySendiri.strToList(dbSidikJari[i].Item1));
                     if (value > -1)
                     {
-                        idxBM = i;
+                        Debug.WriteLine("BM ditemukan");
+                        kemiripanMap.Add(dbSidikJari[i].Item2, 100);
+                        this.associatedName = dbSidikJari[i].Item2;
                         break;
                     }
                 }
                 Debug.WriteLine("CHECKPOINT 2");
-                if (value > -1)
-                {
-                    // show kecocokan 100%, give data
-                    this.associatedName = dbSidikJari[idxBM].Item2;
-                    this.sidikJariMatch.Image = Utility.ConvertStringToImage(dbSidikJari[idxBM].Item1);
-                    numberKecocokan.Text = "100 %";
-                }
                 Debug.WriteLine("CHECKPOINT 3");
             }
-            if (value == -1)
+            int lcsValue = 0;
+            int idx = 0;
+            Debug.WriteLine("CHECKPOINT 4");
+            Debug.WriteLine("Banyak isi db = " + dbSidikJari.Count);
+            for (int i = 0; i < dbSidikJari.Count; i++)
             {
-                int lcsValue = 0;
-                int idx = 0;
-                Debug.WriteLine("CHECKPOINT 4");
-                for (int i = 0; i < dbSidikJari.Count; i++)
+            int temp = LCS.LongestCommonSubsequence(sesuatu, RegexPnySendiri.strToList(dbSidikJari[i].Item1));
+                if (value > -1)
                 {
-                    int temp = LCS.LongestCommonSubsequence(sesuatu, RegexPnySendiri.strToList(dbSidikJari[i].Item1));
-                    Debug.WriteLine(temp);
-                    if (temp > lcsValue)
+                    if (!dbSidikJari[i].Item2.Equals(this.associatedName)) // ensures no duplicate when KMP or BM already found
                     {
-                        lcsValue = temp;
-                        idx = i;
+                        kemiripanMap.Add(dbSidikJari[i].Item2, ((float)temp / sesuatu.Length) * 100);
                     }
-                }
-                Debug.WriteLine("CHECKPOINT 5");
-                float persentaseKemiripan = lcsValue / sesuatu.Length;
-                if (persentaseKemiripan > benchMark)
-                {
-                    // show kemiripan, display si gambarnya
-                    this.associatedName = dbSidikJari[idx].Item2;
-                    this.sidikJariMatch.Image = Utility.ConvertStringToImage(dbSidikJari[idx].Item1);
-                    numberKecocokan.Text = persentaseKemiripan.ToString() + " %";
                 }
                 else
                 {
-                    // show no match
-                    this.sidikJariMatch.Image = Properties.Resources.nomatch;
-
+                    kemiripanMap.Add(dbSidikJari[i].Item2, ((float)temp / sesuatu.Length) * 100);
+                }
+               
+            }
+            string numberTobeShown;
+            string imageTobeShown;
+            var maxPair = kemiripanMap.Aggregate((l, r) => l.Value > r.Value ? l : r);
+            numberTobeShown = maxPair.Value.ToString();
+            if ( maxPair.Value > benchMark)
+            {
+                for (int i = 0; i < dbSidikJari.Count; i++)
+                {
+                    if (dbSidikJari[i].Item2 == maxPair.Key)
+                    {
+                        imageTobeShown = dbSidikJari[i].Item1;
+                        this.sidikJariMatch.Image = Utility.ConvertStringToImage(imageTobeShown);
+                        break;
+                    }
                 }
             }
+            else
+            {
+                this.sidikJariMatch.Image = Properties.Resources.nomatch;
+            }
+            numberKecocokan.Text = numberTobeShown + " %";
+            //this.coverUpHasil.Image = null;
+            this.listHasil.Items.Clear();
+            this.listHasil.Items.Add("NIK | Nama | Tempat Lahir | Tanggal Lahir | Jenis Kelamin | Golongan Darah | Alamat | Agama | Status Perkawinan | Pekerjaan | Kewarganegaraan ");
+            for (int i = 0; i < dbBiodata.Count; i++)
+            {
+                Debug.WriteLine(dbBiodata[i].GetFormattedData());
+            }
+            //////
+            int foundValue = -1; // value kalau KMP atau bm ditemukan, used as a flag
+            List<string> biodataygDitampilkan = new List<string>();
+            if (this.toggle.Checked) // if using KMP
+            {
+                //Debug.WriteLine("Doing KMP");
+                //for (int i = 0; i < dbSidikJari.Count; i++)
+                //{
+                //    Boolean flag1 = false;
+                //    for (int j = 0; j < dbBiodata.Count; j++)
+                //    {
+                //        value = kmp.kmpmatch(dbBiodata[j].Nama, dbSidikJari[i].Item2);
+                //        if (value > -1)
+                //        {
+                //            Debug.WriteLine("KMP ditemukan");
+                //            foundValue = value;
+                //            biodataygDitampilkan.Add(dbBiodata[j].GetFormattedData());
+                //            flag1 = true;
+                //            break;
+                //        }
+                //    }
+                //    if (flag1)
+                //    {
+                //        break;
+                //    }
+                //}
+                Debug.WriteLine("Doing KMP");
+                foreach (KeyValuePair<string, float> entry in kemiripanMap)
+                {
+                    Boolean flag1 = false;
+                    for (int j = 0; j < dbBiodata.Count; j++)
+                    {
+                        int idxNamaKMP = kmp.kmpmatch(dbBiodata[j].Nama, entry.Key);
+                        if (idxNamaKMP > -1)
+                        {
+                            Debug.WriteLine("KMP ditemukan");
+                            foundValue = idxNamaKMP;
+                            biodataygDitampilkan.Add(dbBiodata[j].GetFormattedData());
+                            flag1 = true;
+                            break;
+                        }
+                    }
+                    if (flag1)
+                    {
+                        break;
+                    }
+                }
+            }
+            else // if using BM
+            {
+                //Debug.WriteLine("Doing BM");
+                //for (int i = 0; i < dbSidikJari.Count; i++)
+                //{
+                //    Boolean flag1 = false;
+                //    for (int j = 0; j < dbBiodata.Count; j++)
+                //    {
+                //        string[] regexOfName = RegexPnySendiri.strToList(dbBiodata[j].Nama);
+                //        value = BoyerMoore.BMMatch(regexOfName, RegexPnySendiri.strToList(dbSidikJari[i].Item2));
+                //        if (value > -1)
+                //        {
+                //            Debug.WriteLine("BM ditemukan");
+                //            foundValue = value;
+                //            biodataygDitampilkan.Add(dbBiodata[j].GetFormattedData());
+                //            flag1 = true;
+                //            break;
+                //        }
+                //    }
+                //    if (flag1)
+                //    {
+                //        break;
+                //    }
+                //}
+                Debug.WriteLine("Doing BM");
+                foreach (KeyValuePair<string, float> entry in kemiripanMap)
+                {
+                    Boolean flag1 = false;
+                    for (int j = 0; j < dbBiodata.Count; j++)
+                    {
+                        string[] regexOfName = RegexPnySendiri.strToList(dbBiodata[j].Nama);
+                        int idxNamaBM = BoyerMoore.BMMatch(regexOfName, RegexPnySendiri.strToList(entry.Key));
+                        if (idxNamaBM > -1)
+                        {
+                            Debug.WriteLine("BM ditemukan");
+                            foundValue = idxNamaBM;
+                            biodataygDitampilkan.Add(dbBiodata[j].GetFormattedData());
+                            flag1 = true;
+                            break;
+                        }
+                    }
+                    if (flag1)
+                    {
+                        break;
+                    }
+                }
+            }
+            ////// save
+
+            /// weird bug found here, originally handles for duplicate data, it detects it as malware ?!?!
+            foreach (KeyValuePair<string, float> entry in kemiripanMap)
+            {
+                for (int j = 0; j < dbBiodata.Count; j++)
+                {
+                    string[] regexOfName = RegexPnySendiri.strToList(dbBiodata[j].Nama);
+                    int temp2 = LCS.LongestCommonSubsequence(regexOfName, RegexPnySendiri.strToList(entry.Key));
+                    float kemiripanNama = ((float)temp2 / regexOfName.Length) * 100;
+                    if (kemiripanNama > 95)
+                    {
+                        biodataygDitampilkan.Add(dbBiodata[j].GetFormattedData());
+                        break;
+                    }
+                    
+                }
+            }
+            //////ends here
+
+
+            //Debug.WriteLine(biodataygDitampilkan.Count);
+            for (int i = 0; i < biodataygDitampilkan.Count; i++)
+            {
+                listHasil.Items.Add(biodataygDitampilkan[i]);
+            }
+            //////
+            this.listHasil.Refresh();
             watch.Stop();
             Debug.WriteLine("CHECKPOINT 6");
             var elapsedMs = watch.ElapsedMilliseconds;
             this.waktuEksekusi = elapsedMs;
+            numberWaktu.Text = this.waktuEksekusi.ToString();
         }
 
         private void label1_Click_1(object sender, EventArgs e)
@@ -184,6 +331,11 @@ namespace Tubes3GUI
         }
 
         private void label1_Click_3(object sender, EventArgs e)
+        {
+
+        }
+
+        private void coverUpHasil_Click(object sender, EventArgs e)
         {
 
         }
