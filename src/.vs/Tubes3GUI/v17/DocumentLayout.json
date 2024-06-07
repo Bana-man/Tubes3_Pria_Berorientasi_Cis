@@ -3,32 +3,23 @@
   "WorkspaceRootPath": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Tubes3GUI\\Utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Class2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Tubes3GUI\\Class2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{58A0B7AF-762A-405F-A2E0-EA3044ECC8AC}|Tubes3GUI\\Tubes3GUI.csproj|C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\tubes3gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{58A0B7AF-762A-405F-A2E0-EA3044ECC8AC}|Tubes3GUI\\Tubes3GUI.csproj|solutionrelative:tubes3gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{58A0B7AF-762A-405F-A2E0-EA3044ECC8AC}|Tubes3GUI\\Tubes3GUI.csproj|c:\\users\\sean nugroho\\documents\\semester4\\stima\\tugas\\tubes3new\\tubes3_pria_berorientasi_cis\\src\\tubes3gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58A0B7AF-762A-405F-A2E0-EA3044ECC8AC}|Tubes3GUI\\Tubes3GUI.csproj|solutionrelative:tubes3gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\RegexHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Tubes3GUI\\RegexHandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{58A0B7AF-762A-405F-A2E0-EA3044ECC8AC}|Tubes3GUI\\Tubes3GUI.csproj|C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\tubes3gui\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{58A0B7AF-762A-405F-A2E0-EA3044ECC8AC}|Tubes3GUI\\Tubes3GUI.csproj|solutionrelative:tubes3gui\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{58A0B7AF-762A-405F-A2E0-EA3044ECC8AC}|Tubes3GUI\\Tubes3GUI.csproj|C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\tubes3gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{58A0B7AF-762A-405F-A2E0-EA3044ECC8AC}|Tubes3GUI\\Tubes3GUI.csproj|solutionrelative:tubes3gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{58A0B7AF-762A-405F-A2E0-EA3044ECC8AC}|Tubes3GUI\\Tubes3GUI.csproj|C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\tubes3gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{58A0B7AF-762A-405F-A2E0-EA3044ECC8AC}|Tubes3GUI\\Tubes3GUI.csproj|solutionrelative:tubes3gui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sean Nugroho\\AppData\\Local\\Temp\\.vsdbgsrc\\8caa55885db827e4d60f3d5c73afc8fffa843cc71a5a1ef73ed88dc8694fb812\\ThrowHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Tubes3GUI\\Utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{58A0B7AF-762A-405F-A2E0-EA3044ECC8AC}|Tubes3GUI\\Tubes3GUI.csproj|C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\tubes3gui\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,79 +36,39 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 206,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 516,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Program.cs",
               "RelativeDocumentMoniker": "Tubes3GUI\\Program.cs",
               "ToolTip": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Program.cs",
               "RelativeToolTip": "Tubes3GUI\\Program.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAxwCQAAAAnAAAA",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwCMAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-20T14:59:09.208Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Utility.cs",
-              "DocumentMoniker": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Utility.cs",
-              "RelativeDocumentMoniker": "Tubes3GUI\\Utility.cs",
-              "ToolTip": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Utility.cs",
-              "RelativeToolTip": "Tubes3GUI\\Utility.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAowDcAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-20T15:00:38.861Z",
               "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Class2.cs",
-              "DocumentMoniker": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Class2.cs",
-              "RelativeDocumentMoniker": "Tubes3GUI\\Class2.cs",
-              "ToolTip": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Class2.cs",
-              "RelativeToolTip": "Tubes3GUI\\Class2.cs",
-              "ViewState": "AQIAAFUAAAAAAAAAAAAiwFEAAACDAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T02:07:44.764Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RegexHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\RegexHandler.cs",
-              "RelativeDocumentMoniker": "Tubes3GUI\\RegexHandler.cs",
-              "ToolTip": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\RegexHandler.cs",
-              "RelativeToolTip": "Tubes3GUI\\RegexHandler.cs",
-              "ViewState": "AQIAAAIBAAAAAAAAAAAqwP8AAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T12:38:28.229Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "Tubes3GUI\\Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Form1.Designer.cs",
-              "RelativeToolTip": "Tubes3GUI\\Form1.Designer.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAASwOMAAAA8AAAA",
+              "Title": "Utility.cs",
+              "DocumentMoniker": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Utility.cs",
+              "RelativeDocumentMoniker": "Tubes3GUI\\Utility.cs",
+              "ToolTip": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Utility.cs",
+              "RelativeToolTip": "Tubes3GUI\\Utility.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAAmwDQAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T13:57:02.075Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-20T15:00:38.861Z",
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Form1.cs",
               "RelativeDocumentMoniker": "Tubes3GUI\\Form1.cs",
@@ -129,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "Resources.resx",
               "DocumentMoniker": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Properties\\Resources.resx",
               "RelativeDocumentMoniker": "Tubes3GUI\\Properties\\Resources.resx",
@@ -141,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Class1.cs",
               "RelativeDocumentMoniker": "Tubes3GUI\\Class1.cs",
@@ -154,21 +105,34 @@
           ]
         },
         {
-          "DockedWidth": 334,
+          "DockedWidth": 24,
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Form1.cs",
               "RelativeDocumentMoniker": "Tubes3GUI\\Form1.cs",
               "ToolTip": "C:\\Users\\Sean Nugroho\\Documents\\Semester4\\Stima\\Tugas\\Tubes3new\\Tubes3_Pria_Berorientasi_Cis\\src\\Tubes3GUI\\Form1.cs",
               "RelativeToolTip": "Tubes3GUI\\Form1.cs",
-              "ViewState": "AQIAABsBAAAAAAAAAAAqwC4BAAAAAAAA",
+              "ViewState": "AQIAAKgAAAAAAAAAAN6qwG0BAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-20T15:32:05.698Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ThrowHelper.cs",
+              "DocumentMoniker": "C:\\Users\\Sean Nugroho\\AppData\\Local\\Temp\\.vsdbgsrc\\8caa55885db827e4d60f3d5c73afc8fffa843cc71a5a1ef73ed88dc8694fb812\\ThrowHelper.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\8caa55885db827e4d60f3d5c73afc8fffa843cc71a5a1ef73ed88dc8694fb812\\ThrowHelper.cs",
+              "ToolTip": "C:\\Users\\Sean Nugroho\\AppData\\Local\\Temp\\.vsdbgsrc\\8caa55885db827e4d60f3d5c73afc8fffa843cc71a5a1ef73ed88dc8694fb812\\ThrowHelper.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\8caa55885db827e4d60f3d5c73afc8fffa843cc71a5a1ef73ed88dc8694fb812\\ThrowHelper.cs [Read Only]",
+              "ViewState": "AQIAABMAAAAAAAAAAAAnwB4AAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T10:46:26.5Z",
+              "EditorCaption": " [Read Only]"
             }
           ]
         }

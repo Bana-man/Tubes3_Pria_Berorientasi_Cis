@@ -16,7 +16,7 @@ namespace StringHandler
             }
             return newList;
         }
-        public static int LongestCommonSubsequence(string[] regex, string[] normal)
+        public static float LongestCommonSubsequence(string[] regex, string[] normal)
         {
             List<int> matchIdx;
             List<int> prevMatchIdx = new List<int>(); prevMatchIdx.Add(0);
@@ -64,7 +64,18 @@ namespace StringHandler
                 if (matchIdx.Count != 0) { prevMatchIdx = copyListInt(matchIdx); }
                 prev = copyListInt(cur);
             }
-            return cur[m];
+            int jarak = 0;
+            int idx = cur.IndexOf(1);
+            if (idx == -1) { return 0; }
+
+            for (int i = idx + 1; i < cur.Count; i++)
+            {
+                if (cur[i] != cur[idx]) { idx = i; }
+                else { jarak++; }
+            }
+
+            float persentase = (1 - ((float)jarak / normal.Length)) * ((float)cur[m] / regex.Length);
+            return persentase;
         }
 
         //static void Main()
@@ -85,8 +96,8 @@ namespace StringHandler
             for (int i = 0; i < 257; i++)
                 last[i] = -1; // initialize array
             for (int i = 0; i < pattern.Length; i++)
-                if (RegexPnySendiri.isOptional(pattern[i])) { last[257] = i; } // !!!Belum cek optionalitas
-                else { last[pattern[i][0]] = i; }
+                if (RegexPnySendiri.isOptional(pattern[i])) { last[256] = i; } // !!!Belum cek optionalitas
+                else { last[(int) pattern[i][0]] = i; }
             return last;
         }
         public static int BMMatch(String[] text, String[] pattern)
@@ -131,24 +142,24 @@ namespace StringHandler
     }
     class kmp
     {
-        public static int kmpmatch(string text, string pattern)
+        public static int kmpmatch(string[] text, string[] pattern)
         {
             int[] b = computeborderfunction(pattern);
             int i = 0, j = 0;
 
-            string[] regex = RegexPnySendiri.strToRgx(pattern);
-            string[] textarr = RegexPnySendiri.strToList(text);
+            //string[] regex = RegexPnySendiri.strToRgx(pattern);
+            //string[] textarr = RegexPnySendiri.strToList(text);
 
             while (i < text.Length)
             {
-                if (RegexPnySendiri.isEqualRgx(regex[j], textarr[i]) >= 0)   // char equal
+                if (RegexPnySendiri.isEqualRgx(pattern[j], text[i]) >= 0)   // char equal
                 {
                     if (j == pattern.Length - 1)
                         return i - j + 1;
 
                     i++; j++;
                 }
-                else if (RegexPnySendiri.isOptional(regex[j]))
+                else if (RegexPnySendiri.isOptional(pattern[j]))
                 {
                     j++;
                 }
@@ -165,7 +176,7 @@ namespace StringHandler
             return -1;
         }
 
-        public static int[] computeborderfunction(string pattern)
+        public static int[] computeborderfunction(string[] pattern)
         {
             int length = pattern.Length;
             int[] b = new int[length];
@@ -199,7 +210,7 @@ namespace StringHandler
 
         //static void Main()
         //{
-        //    Console.WriteLine(kmpmatch("ascnwivc5jav14hbdf", "csjaeviah"));
+        //    Console.WriteLine(kmpmatch(RegexPnySendiri.strToList("ascnwivc5jav14hbdf"), RegexPnySendiri.strToRgx("csjaeviah")));
         //    Console.ReadLine();
         //}
     }

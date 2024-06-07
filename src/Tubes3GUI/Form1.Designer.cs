@@ -41,7 +41,6 @@ namespace Tubes3GUI
             this.sidikJariAsal = new System.Windows.Forms.PictureBox();
             this.sidikJariMatch = new System.Windows.Forms.PictureBox();
             this.TitleLable = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.toggle = new System.Windows.Forms.CheckBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.waktuPencarian = new System.Windows.Forms.Label();
@@ -55,21 +54,24 @@ namespace Tubes3GUI
             // listHasil
             // 
             this.listHasil.FormattingEnabled = true;
+            this.listHasil.ItemHeight = 20;
             this.listHasil.Items.AddRange(new object[] {
             "NIK | Nama | Tempat Lahir | Tanggal Lahir | Jenis Kelamin | Golongan Darah | Alam" +
                 "at | Agama | Status Perkawinan | Pekerjaan | Kewarganegaraan "});
-            this.listHasil.Location = new System.Drawing.Point(430, 139);
+            this.listHasil.Location = new System.Drawing.Point(645, 214);
+            this.listHasil.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listHasil.Name = "listHasil";
-            this.listHasil.Size = new System.Drawing.Size(697, 329);
+            this.listHasil.Size = new System.Drawing.Size(1044, 504);
             this.listHasil.TabIndex = 0;
             this.listHasil.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // selectFileButton
             // 
             this.selectFileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectFileButton.Location = new System.Drawing.Point(54, 513);
+            this.selectFileButton.Location = new System.Drawing.Point(81, 789);
+            this.selectFileButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.selectFileButton.Name = "selectFileButton";
-            this.selectFileButton.Size = new System.Drawing.Size(146, 57);
+            this.selectFileButton.Size = new System.Drawing.Size(219, 88);
             this.selectFileButton.TabIndex = 1;
             this.selectFileButton.Text = "Select Finger Print";
             this.selectFileButton.UseVisualStyleBackColor = true;
@@ -79,9 +81,10 @@ namespace Tubes3GUI
             // 
             this.sidikJariAsal.BackColor = System.Drawing.SystemColors.ControlDark;
             this.sidikJariAsal.Image = global::Tubes3GUI.Properties.Resources.masukan;
-            this.sidikJariAsal.Location = new System.Drawing.Point(-1, 151);
+            this.sidikJariAsal.Location = new System.Drawing.Point(-2, 232);
+            this.sidikJariAsal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.sidikJariAsal.Name = "sidikJariAsal";
-            this.sidikJariAsal.Size = new System.Drawing.Size(201, 298);
+            this.sidikJariAsal.Size = new System.Drawing.Size(302, 458);
             this.sidikJariAsal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.sidikJariAsal.TabIndex = 2;
             this.sidikJariAsal.TabStop = false;
@@ -91,9 +94,10 @@ namespace Tubes3GUI
             // 
             this.sidikJariMatch.BackColor = System.Drawing.SystemColors.ControlDark;
             this.sidikJariMatch.Image = global::Tubes3GUI.Properties.Resources.match;
-            this.sidikJariMatch.Location = new System.Drawing.Point(213, 151);
+            this.sidikJariMatch.Location = new System.Drawing.Point(320, 232);
+            this.sidikJariMatch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.sidikJariMatch.Name = "sidikJariMatch";
-            this.sidikJariMatch.Size = new System.Drawing.Size(208, 298);
+            this.sidikJariMatch.Size = new System.Drawing.Size(312, 458);
             this.sidikJariMatch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.sidikJariMatch.TabIndex = 3;
             this.sidikJariMatch.TabStop = false;
@@ -103,30 +107,22 @@ namespace Tubes3GUI
             // 
             this.TitleLable.AutoSize = true;
             this.TitleLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleLable.Location = new System.Drawing.Point(138, 44);
+            this.TitleLable.Location = new System.Drawing.Point(207, 68);
+            this.TitleLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TitleLable.Name = "TitleLable";
-            this.TitleLable.Size = new System.Drawing.Size(843, 55);
+            this.TitleLable.Size = new System.Drawing.Size(1268, 82);
             this.TitleLable.TabIndex = 5;
             this.TitleLable.Text = "Aplikasi C# Tubes 3 Strategi Algoritma";
             this.TitleLable.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(0, 0);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // toggle
             // 
             this.toggle.Appearance = System.Windows.Forms.Appearance.Button;
             this.toggle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toggle.Location = new System.Drawing.Point(275, 513);
+            this.toggle.Location = new System.Drawing.Point(412, 789);
+            this.toggle.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.toggle.Name = "toggle";
-            this.toggle.Size = new System.Drawing.Size(146, 57);
+            this.toggle.Size = new System.Drawing.Size(219, 88);
             this.toggle.TabIndex = 7;
             this.toggle.Text = "BM";
             this.toggle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -136,9 +132,10 @@ namespace Tubes3GUI
             // searchButton
             // 
             this.searchButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchButton.Location = new System.Drawing.Point(509, 512);
+            this.searchButton.Location = new System.Drawing.Point(764, 788);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(146, 57);
+            this.searchButton.Size = new System.Drawing.Size(219, 88);
             this.searchButton.TabIndex = 8;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -148,9 +145,10 @@ namespace Tubes3GUI
             // 
             this.waktuPencarian.AutoSize = true;
             this.waktuPencarian.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.waktuPencarian.Location = new System.Drawing.Point(713, 512);
+            this.waktuPencarian.Location = new System.Drawing.Point(1070, 788);
+            this.waktuPencarian.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.waktuPencarian.Name = "waktuPencarian";
-            this.waktuPencarian.Size = new System.Drawing.Size(182, 20);
+            this.waktuPencarian.Size = new System.Drawing.Size(271, 29);
             this.waktuPencarian.TabIndex = 9;
             this.waktuPencarian.Text = "Waktu Pencarian            :";
             this.waktuPencarian.Click += new System.EventHandler(this.label1_Click_1);
@@ -159,9 +157,10 @@ namespace Tubes3GUI
             // 
             this.persenCocok.AutoSize = true;
             this.persenCocok.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.persenCocok.Location = new System.Drawing.Point(713, 563);
+            this.persenCocok.Location = new System.Drawing.Point(1070, 866);
+            this.persenCocok.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.persenCocok.Name = "persenCocok";
-            this.persenCocok.Size = new System.Drawing.Size(185, 20);
+            this.persenCocok.Size = new System.Drawing.Size(279, 29);
             this.persenCocok.TabIndex = 10;
             this.persenCocok.Text = "Persentase Kecocokan  :";
             this.persenCocok.Click += new System.EventHandler(this.label2_Click);
@@ -170,9 +169,10 @@ namespace Tubes3GUI
             // 
             this.numberKecocokan.AutoSize = true;
             this.numberKecocokan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numberKecocokan.Location = new System.Drawing.Point(904, 563);
+            this.numberKecocokan.Location = new System.Drawing.Point(1356, 866);
+            this.numberKecocokan.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.numberKecocokan.Name = "numberKecocokan";
-            this.numberKecocokan.Size = new System.Drawing.Size(48, 20);
+            this.numberKecocokan.Size = new System.Drawing.Size(74, 29);
             this.numberKecocokan.TabIndex = 11;
             this.numberKecocokan.Text = "xxx %";
             this.numberKecocokan.Click += new System.EventHandler(this.label1_Click_2);
@@ -181,29 +181,30 @@ namespace Tubes3GUI
             // 
             this.numberWaktu.AutoSize = true;
             this.numberWaktu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numberWaktu.Location = new System.Drawing.Point(904, 513);
+            this.numberWaktu.Location = new System.Drawing.Point(1356, 789);
+            this.numberWaktu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.numberWaktu.Name = "numberWaktu";
-            this.numberWaktu.Size = new System.Drawing.Size(55, 20);
+            this.numberWaktu.Size = new System.Drawing.Size(84, 29);
             this.numberWaktu.TabIndex = 13;
             this.numberWaktu.Text = "xxx ms";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 678);
+            this.ClientSize = new System.Drawing.Size(1708, 1043);
             this.Controls.Add(this.numberWaktu);
             this.Controls.Add(this.numberKecocokan);
             this.Controls.Add(this.persenCocok);
             this.Controls.Add(this.waktuPencarian);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.toggle);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.TitleLable);
             this.Controls.Add(this.sidikJariMatch);
             this.Controls.Add(this.sidikJariAsal);
             this.Controls.Add(this.selectFileButton);
             this.Controls.Add(this.listHasil);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.sidikJariAsal)).EndInit();
@@ -235,7 +236,6 @@ namespace Tubes3GUI
             this.sidikJariAsal.ImageLocation = imageLocation;
         }
         private Label TitleLable;
-        private CheckBox checkBox1;
         private CheckBox toggle;
         //kalau togglenya checked berarti menggunakan algoritma BM
         private Button searchButton;

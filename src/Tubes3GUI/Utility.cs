@@ -53,7 +53,7 @@ namespace Tubes3GUI
             StringBuilder stringBuilder = new StringBuilder();
 
             // Process each byte in the byte array
-            for (var i = 15000; i < 15500; i += 1)
+            for (var i = 15000; i < 15100; i += 1)
             {
                 // Convert the byte to its binary representation
                 char binaryString = (char)imageBytes[i];
