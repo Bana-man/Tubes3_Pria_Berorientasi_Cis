@@ -102,7 +102,7 @@ namespace Tubes3GUI
         {
             // Get all image files from the folder
             string[] imageFiles = Directory.GetFiles(folderPath, "*.*")
-                                            .Where(f => f.EndsWith(".jpg") || f.EndsWith(".jpeg") || f.EndsWith(".png") || f.EndsWith(".BMP"))
+                                            .Where(f => f.EndsWith(".jpg") || f.EndsWith(".jpeg") || f.EndsWith(".png") || f.EndsWith(".BMP") || f.EndsWith(".bmp"))
                                             .Take(10)
                                             .ToArray();
 

@@ -21,14 +21,8 @@ namespace Tubes3GUI
         static void Main()
         {
             // Use a verbatim string literal to handle file paths correctly
-            Bitmap image = new Bitmap("C:/Users/Sean Nugroho/Pictures/ptrr.png");
-            //var watch = System.Diagnostics.Stopwatch.StartNew();
-            string integerList = Utility.ConvertImageToString(image);
-            Debug.WriteLine(integerList);
-            //watch.Stop();
-            //var elapsedMs = watch.ElapsedMilliseconds;
-            //string[] names = { "Emma Martinez", "Budi Budiman", "John Doe", "Daniel Rodriguez", "Jane Smith", "Sophia Garcia", "Michael Johnson", "Matthew Hernandez","Isabella Gonzalez", "Emily Davis" };
-            //string[] fingerPrints = ConnectDB.LoadFirst10ImagesAsBitmap("C:/Users/Sean Nugroho/Documents/fingerprintsamples");
+            //string[] names = { "Emma Martinez", "Budi Budiman", "John Doe", "Daniel Rodriguez", "Jane Smith", "Sophia Garcia", "Michael Johnson", "Matthew Hernandez", "Isabella Gonzalez", "Emily Davis" };
+            //string[] fingerPrints = ConnectDB.LoadFirst10ImagesAsBitmap("C:\\Users\\irvan\\Documents\\uni\\smt 4\\stima\\tubes\\dataset");
             //for (int i = 0; i < fingerPrints.Length; i++)
             //{
             //    ConnectDB.InsertSidikJari(fingerPrints[i], names[i]);

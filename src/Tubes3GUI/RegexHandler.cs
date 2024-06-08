@@ -165,7 +165,7 @@ namespace StringHandler
                 }
                 else if (j > 0)
                 {
-                    j = b[j];
+                    j = b[j - 1];
                 }
                 else
                 {

@@ -41,7 +41,6 @@ namespace Tubes3GUI
             Debug.WriteLine("Your message here");
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Title = "Select File";
-            openFileDialog1.InitialDirectory = @"C:\";  //--"C:\\";
             openFileDialog1.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif|All Files|*.*";
             openFileDialog1.FilterIndex = 2;
             openFileDialog1.ShowDialog();
@@ -128,7 +127,7 @@ namespace Tubes3GUI
                 int idxBM = 0;
                 for (int i = 0; i < dbSidikJari.Count; i++)
                 {
-                    value = BoyerMoore.BMMatch(RegexPnySendiri.strToList(dbSidikJari[i].Item1),sesuatu);
+                    value = BoyerMoore.BMMatch(RegexPnySendiri.strToList(dbSidikJari[i].Item1), sesuatu);
                     if (value > -1)
                     {
                         Console.WriteLine("BM ditemukan");
@@ -140,7 +139,7 @@ namespace Tubes3GUI
             }
             for (int i = 0; i < dbSidikJari.Count; i++)
             {
-            float temp = LCS.LongestCommonSubsequence(sesuatu, RegexPnySendiri.strToList(dbSidikJari[i].Item1));
+                float temp = LCS.LongestCommonSubsequence(sesuatu, RegexPnySendiri.strToList(dbSidikJari[i].Item1)) * 100;
                 if (value > -1)
                 {
                     float persentaseKemiripan = temp * 99;
@@ -222,7 +221,11 @@ namespace Tubes3GUI
                                 similarNames.Add(dbBiodata[j].GetFormattedData());
                             }
                         }
-                        biodataygDitampilkan.Add(similarNames.Last());
+                        if (similarNames.Count > 0)
+                        {
+                            similarNames.Sort();
+                            biodataygDitampilkan.Add(similarNames.Last());
+                        }
                     }
                 }
             }
