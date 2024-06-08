@@ -160,8 +160,13 @@ namespace Tubes3GUI
             }
             string numberTobeShown;
             string imageTobeShown;
-            var maxPair = kemiripanMap.Aggregate((l, r) => l.Value > r.Value ? l : r); // mendapatkan pair dengan kemiripan tertinggi
+            KeyValuePair<String, float> maxPair = new KeyValuePair<string, float>("default", 0); ;
+            if (kemiripanMap.Count > 0) {
+                maxPair = kemiripanMap.Aggregate((l, r) => l.Value > r.Value ? l : r);
+            }
             numberTobeShown = maxPair.Value.ToString();
+            Console.WriteLine("nama orang termirip: ");
+            Console.WriteLine(maxPair.Key.ToString());
             if ( maxPair.Value > benchMark)
             {
                 for (int i = 0; i < dbSidikJari.Count; i++)
@@ -187,34 +192,14 @@ namespace Tubes3GUI
             List<string> biodataygDitampilkan = new List<string>();
             if (this.toggle.Checked) // if using KMP
             {
-                //Debug.WriteLine("Doing KMP");
-                //for (int i = 0; i < dbSidikJari.Count; i++)
-                //{
-                //    Boolean flag1 = false;
-                //    for (int j = 0; j < dbBiodata.Count; j++)
-                //    {
-                //        value = kmp.kmpmatch(dbBiodata[j].Nama, dbSidikJari[i].Item2);
-                //        if (value > -1)
-                //        {
-                //            Debug.WriteLine("KMP ditemukan");
-                //            foundValue = value;
-                //            biodataygDitampilkan.Add(dbBiodata[j].GetFormattedData());
-                //            flag1 = true;
-                //            break;
-                //        }
-                //    }
-                //    if (flag1)
-                //    {
-                //        break;
-                //    }
-                //}
                 Debug.WriteLine("Doing KMP");
+                Console.WriteLine(kemiripanMap.Count);
                 foreach (KeyValuePair<string, float> entry in kemiripanMap)
                 {
                     for (int j = 0; j < dbBiodata.Count; j++)
                     {
                         string[] regexOfName = RegexPnySendiri.strToRgx(dbBiodata[j].Nama);
-                        int idxNamaKMP = kmp.kmpmatch(RegexPnySendiri.strToList(entry.Key), regexOfName);
+                        int idxNamaKMP = kmp.kmpmatch(RegexPnySendiri.strToList(entry.Key),regexOfName);
                         if (idxNamaKMP > -1)
                         {
                             Debug.WriteLine("KMP ditemukan");
@@ -241,40 +226,18 @@ namespace Tubes3GUI
                     }
                 }
             }
-            else // if using BM
-            {
-                //Debug.WriteLine("Doing BM");
-                //for (int i = 0; i < dbSidikJari.Count; i++)
-                //{
-                //    Boolean flag1 = false;
-                //    for (int j = 0; j < dbBiodata.Count; j++)
-                //    {
-                //        string[] regexOfName = RegexPnySendiri.strToList(dbBiodata[j].Nama);
-                //        value = BoyerMoore.BMMatch(regexOfName, RegexPnySendiri.strToList(dbSidikJari[i].Item2));
-                //        if (value > -1)
-                //        {
-                //            Debug.WriteLine("BM ditemukan");
-                //            foundValue = value;
-                //            biodataygDitampilkan.Add(dbBiodata[j].GetFormattedData());
-                //            flag1 = true;
-                //            break;
-                //        }
-                //    }
-                //    if (flag1)
-                //    {
-                //        break;
-                //    }
-                //}
-                
+            else 
+            {   
                 Console.WriteLine("count of thingy");
-                Console.WriteLine(kemiripanMap.Count.ToString());
-                Console.WriteLine(dbBiodata[0].Nama.ToString());
+                Console.WriteLine(kemiripanMap.Count);
                 foreach (KeyValuePair<string, float> entry in kemiripanMap)
                 {
                     for (int j = 0; j < dbBiodata.Count; j++)
                     {
-                        string[] regexOfName = RegexPnySendiri.strToRgx(dbBiodata[j].Nama);
-                        int idxNamaBM = BoyerMoore.BMMatch(RegexPnySendiri.strToList(entry.Key),regexOfName);
+                        string[] regexOfName = RegexPnySendiri.strToList(dbBiodata[j].Nama);
+                        int idxNamaBM = BoyerMoore.BMMatch(regexOfName,RegexPnySendiri.strToRgx(entry.Key));
+                        Console.WriteLine("bm");
+                        Console.WriteLine(idxNamaBM);
                         if (idxNamaBM > -1)
                         {
                             Debug.WriteLine("BM ditemukan");
@@ -286,18 +249,26 @@ namespace Tubes3GUI
                     if (foundValue == -1)
                     {
                         List<String> similarNames = new List<String>();
-                        for (int j = 0; j < dbBiodata.Count; j++)
+                        for (int i = 0; i < dbBiodata.Count; i++)
                         {
-                            string[] regexOfName = RegexPnySendiri.strToRgx(dbBiodata[j].Nama);
+                            string[] regexOfName = RegexPnySendiri.strToList(dbBiodata[i].Nama);
 
-                            float temp2 = LCS.LongestCommonSubsequence(regexOfName, RegexPnySendiri.strToList(entry.Key));
+                            float temp2 = LCS.LongestCommonSubsequence(regexOfName, RegexPnySendiri.strToRgx(entry.Key));
                             float kemiripanNama = temp2 * 99;
-                            if (kemiripanNama > 80)
+                            Console.WriteLine("lcs nama");
+                            Console.WriteLine(dbBiodata[i].Nama);
+                            Console.WriteLine(entry.Key);
+                            Console.WriteLine(kemiripanNama.ToString());
+                            if (kemiripanNama > 10)
                             {
-                                similarNames.Add(dbBiodata[j].GetFormattedData());
+                                similarNames.Add(dbBiodata[i].GetFormattedData());
                             }
                         }
-                        biodataygDitampilkan.Add(similarNames.Last());
+                        if (similarNames.Count > 0)
+                        {
+                            similarNames.Sort();
+                            biodataygDitampilkan.Add(similarNames.Last());
+                        }
                     }
 
                 }
