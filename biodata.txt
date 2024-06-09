@@ -1,0 +1,20 @@
+2345634545783940,Emma Martinez,Manado,1990-09-25,Perempuan,B,Jl. Sam Ratulangi No. 19,Islam,Cerai,Perawat,Indonesia
+1231342323049820,Budi Budiman,Mesopotamia,2001-05-12,Laki-Laki,A,alamat palsu,Scientology,Cerai,Pengulas Pornografi,Arab Saudi
+1234565334564564,John Doe,Jakarta,1990-05-15,Laki-Laki,A,Jl. Sudirman No. 1,Islam,Menikah,Programmer,Indonesia
+1234534223423465,Daniel Rodriguez,Pontianak,1986-01-03,Laki-Laki,AB,Jl. Tanjungpura No. 21,Kristen,Menikah,Arsitek,Indonesia
+2345665434574567,Jane Smith,Surabaya,1985-09-22,Perempuan,B,Jl. Tunjungan No. 3,Kristen,Belum Menikah,Akuntan,Indonesia
+2345611345345654,Sophia Garcia,Balikpapan,1994-06-18,Perempuan,O,Jl. Jenderal Sudirman No. 23,Katolik,Belum Menikah,Konsultan,Indonesia
+3456765623452465,Michael Johnson,Bandung,1992-03-12,Laki-Laki,AB,Jl. Dipati Ukur No. 5,Hindu,Menikah,Guru,Indonesia
+3456734523452344,Matthew Hernandez,Ambon,1989-11-30,Laki-Laki,A,Jl. Diponegoro No. 25,Hindu,Menikah,Pengusaha,Indonesia
+4567876445674567,Isabella Gonzalez,Ternate,1991-08-12,Perempuan,B,Jl. Kebun Cengkeh No. 27,Buddha,Belum Menikah,Penulis,Indonesia
+4567890112341534,Emily Davis,Medan,1988-11-07,Perempuan,O,Jl. Gatot Subroto No. 7,Buddha,Cerai,Wirausaha,Indonesia
+5678934534523452,David Wilson,Makassar,1980-06-20,Laki-Laki,A,Jl. Sulawesi No. 9,Islam,Menikah,Insinyur,Indonesia
+5678945634565565,Jacob Perez,Jayapura,1985-03-27,Laki-Laki,AB,Jl. Samratulangi No. 29,Islam,Menikah,Fotografer,Indonesia
+6789032312344746,Sophia Brown,Semarang,1995-02-28,Perempuan,B,Jl. Pandanaran No. 11,Katolik,Belum Menikah,Mahasiswa,Indonesia
+6789045334524645,Mia Torres,Pekanbaru,1993-10-14,Perempuan,O,Jl. Sudirman No. 31,Kristen,Cerai,Sales,Indonesia
+7890167512341545,William Taylor,Yogyakarta,1987-07-10,Laki-Laki,AB,Jl. Malioboro No. 13,Kristen,Menikah,Dokter,Indonesia
+7890134567456744,Benjamin Sanchez,Padang,1987-05-02,Laki-Laki,A,Jl. Imam Bonjol No. 33,Katolik,Menikah,Manajer,Indonesia
+8901258734534556,Olivia Anderson,Palembang,1993-12-05,Perempuan,O,Jl. Sudirman No. 15,Hindu,Belum Menikah,Pengacara,Indonesia
+8901223457856456,Ava Ramirez,Banjarmasin,1996-07-19,Perempuan,B,Jl. A. Yani No. 35,Hindu,Belum Menikah,Peneliti,Indonesia
+9012323454323465,James Thomas,Denpasar,1982-04-18,Laki-Laki,A,Jl. Bypass Ngurah Rai No. 17,Buddha,Menikah,Pilot,Indonesia
+9012345676544565,Liam Gomez,Kupang,1983-02-08,Laki-Laki,AB,Jl. Pemuda No. 37,Buddha,Menikah,Analis,Indonesia
