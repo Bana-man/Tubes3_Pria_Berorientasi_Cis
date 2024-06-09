@@ -87,13 +87,13 @@ Project is: _complete_
 Pengembangan kedepannya dapat dilakukan dengan menambahkan fitur berikut:
 
 -   Mempercantik tampilan GUI
--   Mengembangkan cara handling regex yang lebih fleksibel, tak hanya terbatas untuk regex optional dan or
+-   Mengembangkan cara handling regex yang lebih fleksibel, tak hanya terbatas untuk regex Optional dan OR
 
 ## Acknowledgements
 
 Ucapan terima kasih diberikan kepada:
 
--   Pak Rinaldi Munir selaku dosen mata kuliah IF2211 yang telah mengajarkan materi UCS, Greedy Best-First Search, dan A\*
+-   Pak Rinaldi Munir selaku dosen mata kuliah IF2211 yang telah mengajarkan materi KMP, Boyer-Moore, dan Regex
 -   Tim Asisten yang telah membimbing untuk membuat tugas besar 3 ini
 
 ## Creator
