@@ -1,4 +1,4 @@
-# Tugas Kecil 3 IF2211 Strategi Algoritma
+# Tugas Besar 3 IF2211 Strategi Algoritma
 
 > Pemanfaatan Pattern Matching dalam Membangun Sistem Deteksi Individu Berbasis Biometrik Melalui Citra Sidik Jari
 
