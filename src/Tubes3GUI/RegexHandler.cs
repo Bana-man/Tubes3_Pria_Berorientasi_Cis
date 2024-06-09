@@ -106,9 +106,9 @@ namespace StringHandler
             int[] last = buildLast(pattern);
             int n = text.Length;
             int m = pattern.Length;
-            int i = 0;
+            int i = 0; // indeks text
 
-            int j = m - 1;
+            int j = m - 1; // indeks pattern
             while (i <= n - 1)
             {
                 if (RegexPnySendiri.isEqualRgx(pattern[j], text[i]) >= 0) // equal
@@ -116,8 +116,24 @@ namespace StringHandler
                     if (j == 0)
                         return i; // match
                     else
-                    { // looking-glass technique
-                        if (i == 0) { i = i + m - j; j = m - 1; }
+                    {
+                        if (i == 0)
+                        {
+                            bool match = true;
+                            for (int x = 0; x < j; x++)
+                            {
+                                if (!RegexPnySendiri.isOptional(pattern[x]))
+                                {
+                                    i = i + m - j; j = m - 1;
+                                    match = false;
+                                    break;
+                                }
+                            }
+                            if (match)
+                            {
+                                return i;
+                            }
+                        }
                         else { j--; i--; }
                     }
                 }
@@ -239,11 +255,11 @@ namespace StringHandler
                 string value;
                 try
                 {
-                    value = dict[str[i].ToString()];
+                    value = dict[str[i].ToString().ToLower()];
                 }
                 catch (KeyNotFoundException _)
                 {
-                    value = str[i].ToString();
+                    value = str[i].ToString().ToLower();
                 }
                 newStr[i] = value;
             }
@@ -262,7 +278,7 @@ namespace StringHandler
             string[] strings = new string[str.Length];
             for (var i = 0; i < str.Length; i++)
             {
-                strings[i] = str[i].ToString();
+                strings[i] = str[i].ToString().ToLower();
             }
             return strings;
         }

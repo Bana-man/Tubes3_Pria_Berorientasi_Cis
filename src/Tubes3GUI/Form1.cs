@@ -210,15 +210,19 @@ namespace Tubes3GUI
                     if (foundValue == -1)
                     {
                         List<String> similarNames = new List<String>();
-                        for (int j = 0; j < dbBiodata.Count; j++)
+                        for (int i = 0; i < dbBiodata.Count; i++)
                         {
-                            string[] regexOfName = RegexPnySendiri.strToRgx(dbBiodata[j].Nama);
+                            string[] regexOfName = RegexPnySendiri.strToList(dbBiodata[i].Nama);
 
-                            float temp2 = LCS.LongestCommonSubsequence(regexOfName, RegexPnySendiri.strToList(entry.Key));
+                            float temp2 = LCS.LongestCommonSubsequence(regexOfName, RegexPnySendiri.strToRgx(entry.Key));
                             float kemiripanNama = temp2 * 99;
-                            if (kemiripanNama > 80)
+                            Console.WriteLine("lcs nama");
+                            Console.WriteLine(dbBiodata[i].Nama);
+                            Console.WriteLine(entry.Key);
+                            Console.WriteLine(kemiripanNama.ToString());
+                            if (kemiripanNama > 10)
                             {
-                                similarNames.Add(dbBiodata[j].GetFormattedData());
+                                similarNames.Add(dbBiodata[i].GetFormattedData());
                             }
                         }
                         if (similarNames.Count > 0)
