@@ -97,7 +97,7 @@ namespace StringHandler
                 last[i] = -1; // initialize array
             for (int i = 0; i < pattern.Length; i++)
                 if (RegexPnySendiri.isOptional(pattern[i])) { last[256] = i; } // !!!Belum cek optionalitas
-                else { last[(int) pattern[i][0]] = i; }
+                else { last[(int)pattern[i][0]] = i; }
             return last;
         }
         public static int BMMatch(String[] text, String[] pattern)
@@ -106,9 +106,9 @@ namespace StringHandler
             int[] last = buildLast(pattern);
             int n = text.Length;
             int m = pattern.Length;
-            int i = 0;
+            int i = 0; // indeks text
 
-            int j = m - 1;
+            int j = m - 1; // indeks pattern
             while (i <= n - 1)
             {
                 if (RegexPnySendiri.isEqualRgx(pattern[j], text[i]) >= 0) // equal
@@ -116,8 +116,24 @@ namespace StringHandler
                     if (j == 0)
                         return i; // match
                     else
-                    { // looking-glass technique
-                        if (i == 0) { i = i + m - j; j = m - 1; }
+                    {
+                        if (i == 0)
+                        {
+                            bool match = true;
+                            for (int x = 0; x < j; x++)
+                            {
+                                if (!RegexPnySendiri.isOptional(pattern[x]))
+                                {
+                                    i = i + m - j; j = m - 1;
+                                    match = false;
+                                    break;
+                                }
+                            }
+                            if (match)
+                            {
+                                return i;
+                            }
+                        }
                         else { j--; i--; }
                     }
                 }
@@ -150,6 +166,7 @@ namespace StringHandler
             //string[] regex = RegexPnySendiri.strToRgx(pattern);
             //string[] textarr = RegexPnySendiri.strToList(text);
 
+            int lastNotMatch = 0;
             while (i < text.Length)
             {
                 if (RegexPnySendiri.isEqualRgx(pattern[j], text[i]) >= 0)   // char equal
@@ -159,12 +176,13 @@ namespace StringHandler
 
                     i++; j++;
                 }
-                else if (RegexPnySendiri.isOptional(pattern[j]))
+                else if (RegexPnySendiri.isOptional(pattern[j]) && lastNotMatch < j)
                 {
                     j++;
                 }
                 else if (j > 0)
                 {
+                    lastNotMatch = j;
                     j = b[j - 1];
                 }
                 else
@@ -221,7 +239,7 @@ namespace StringHandler
             new Dictionary<string, string>(){
                                 {"a", "((a|4)?)"},
                                 {"b", "(b|8)"},
-                                {"d", "((d|17)"},
+                                {"d", "(d|17)"},
                                 {"e", "((e|3)?)"},
                                 {"g", "(g|6)"},
                                 {"i", "((i|1)?)"},
@@ -239,11 +257,11 @@ namespace StringHandler
                 string value;
                 try
                 {
-                    value = dict[str[i].ToString()];
+                    value = dict[str[i].ToString().ToLower()];
                 }
                 catch (KeyNotFoundException _)
                 {
-                    value = str[i].ToString();
+                    value = str[i].ToString().ToLower();
                 }
                 newStr[i] = value;
             }
@@ -262,7 +280,7 @@ namespace StringHandler
             string[] strings = new string[str.Length];
             for (var i = 0; i < str.Length; i++)
             {
-                strings[i] = str[i].ToString();
+                strings[i] = str[i].ToString().ToLower();
             }
             return strings;
         }
