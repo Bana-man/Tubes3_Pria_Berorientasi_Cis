@@ -14,6 +14,8 @@ namespace Tubes3GUI
     internal class ConnectDB
     {
         static String connStr = "Server=localhost;User ID = root; Password=;Database=stima";
+        static bool encryptDatabase = false;
+        static bool decryptDatabase = false;
         public static void printNIK()
         {
             //string connStr = "Server=localhost;User ID = root; Password=;Database=stima";
@@ -51,10 +53,20 @@ namespace Tubes3GUI
             string query = "SELECT * FROM sidik_jari";
             var cmd = new MySqlConnector.MySqlCommand(query, cn);
             var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            if (decryptDatabase)
             {
-                Form1.dbSidikJari.Add((Enkripsi.XorDecrypt(reader["berkas_citra"].ToString()), Enkripsi.XorDecrypt(reader["nama"].ToString())));
+                while (reader.Read())
+                {
+                    Form1.dbSidikJari.Add((Enkripsi.XorDecrypt(reader["berkas_citra"].ToString()), Enkripsi.XorDecrypt(reader["nama"].ToString())));
+                }
+            } else
+            {
+                while (reader.Read())
+                {
+                    Form1.dbSidikJari.Add((reader["berkas_citra"].ToString(), reader["nama"].ToString()));
+                }
             }
+            
         }
         public static void InsertSidikJari(string berkasJari, string nama)
         {
@@ -62,8 +74,15 @@ namespace Tubes3GUI
             cn.Open();
             string query = "INSERT INTO sidik_jari (berkas_citra, nama) VALUES (@berkasJari, @nama)";
             var cmd = new MySqlConnector.MySqlCommand(query, cn);
-            cmd.Parameters.AddWithValue("@berkasJari", Enkripsi.XorEncrypt(berkasJari));
-            cmd.Parameters.AddWithValue("@nama", Enkripsi.XorEncrypt(nama));
+            if (encryptDatabase)
+            {
+                cmd.Parameters.AddWithValue("@berkasJari", Enkripsi.XorEncrypt(berkasJari));
+                cmd.Parameters.AddWithValue("@nama", Enkripsi.XorEncrypt(nama));
+            } else
+            {
+                cmd.Parameters.AddWithValue("@berkasJari", berkasJari);
+                cmd.Parameters.AddWithValue("@nama", nama);
+            }
             cmd.ExecuteNonQuery();
             cn.Close();
         }
@@ -77,17 +96,34 @@ namespace Tubes3GUI
                 "pekerjaan, kewarganegaraan) VALUES (@NIK, @nama, @tempat_lahir, @tanggal_lahir, @jenis_kelamin, @golongan_darah, @alamat, @agama, @status_perkawinan," +
                 "@pekerjaan, @kewarganegaraan)";
             var cmd = new MySqlConnector.MySqlCommand(query, cn);
-            cmd.Parameters.AddWithValue("@NIK", Enkripsi.EncryptOrDecrypt16DigitString(NIK));
-            cmd.Parameters.AddWithValue("@nama", Enkripsi.XorEncrypt(nama));
-            cmd.Parameters.AddWithValue("@tempat_lahir", Enkripsi.XorEncrypt(tempat_lahir));
-            cmd.Parameters.AddWithValue("@tanggal_lahir", Enkripsi.DateEncrypt(tanggal_lahir));
-            cmd.Parameters.AddWithValue("@jenis_kelamin", Enkripsi.EncryptOrDecryptJenisKelamin(jenis_kelamin, true));
-            cmd.Parameters.AddWithValue("@golongan_darah", Enkripsi.XorEncrypt(golongan_darah));
-            cmd.Parameters.AddWithValue("@alamat", Enkripsi.XorEncrypt(alamat));
-            cmd.Parameters.AddWithValue("@agama", Enkripsi.XorEncrypt(agama));
-            cmd.Parameters.AddWithValue("@status_perkawinan", Enkripsi.EncryptOrDecryptStatusPerkawinan(status_perkawinan, true));
-            cmd.Parameters.AddWithValue("@pekerjaan", Enkripsi.XorEncrypt(pekerjaan));
-            cmd.Parameters.AddWithValue("@kewarganegaraan", Enkripsi.XorEncrypt(kewarganegaraan));
+            if (encryptDatabase)
+            {
+                cmd.Parameters.AddWithValue("@NIK", Enkripsi.EncryptOrDecrypt16DigitString(NIK));
+                cmd.Parameters.AddWithValue("@nama", Enkripsi.XorEncrypt(nama));
+                cmd.Parameters.AddWithValue("@tempat_lahir", Enkripsi.XorEncrypt(tempat_lahir));
+                cmd.Parameters.AddWithValue("@tanggal_lahir", Enkripsi.DateEncrypt(tanggal_lahir));
+                cmd.Parameters.AddWithValue("@jenis_kelamin", Enkripsi.EncryptOrDecryptJenisKelamin(jenis_kelamin, true));
+                cmd.Parameters.AddWithValue("@golongan_darah", Enkripsi.XorEncrypt(golongan_darah));
+                cmd.Parameters.AddWithValue("@alamat", Enkripsi.XorEncrypt(alamat));
+                cmd.Parameters.AddWithValue("@agama", Enkripsi.XorEncrypt(agama));
+                cmd.Parameters.AddWithValue("@status_perkawinan", Enkripsi.EncryptOrDecryptStatusPerkawinan(status_perkawinan, true));
+                cmd.Parameters.AddWithValue("@pekerjaan", Enkripsi.XorEncrypt(pekerjaan));
+                cmd.Parameters.AddWithValue("@kewarganegaraan", Enkripsi.XorEncrypt(kewarganegaraan));
+            } else
+            {
+                cmd.Parameters.AddWithValue("@NIK", NIK);
+                cmd.Parameters.AddWithValue("@nama", nama);
+                cmd.Parameters.AddWithValue("@tempat_lahir", tempat_lahir);
+                cmd.Parameters.AddWithValue("@tanggal_lahir", tanggal_lahir);
+                cmd.Parameters.AddWithValue("@jenis_kelamin", jenis_kelamin);
+                cmd.Parameters.AddWithValue("@golongan_darah", golongan_darah);
+                cmd.Parameters.AddWithValue("@alamat", alamat);
+                cmd.Parameters.AddWithValue("@agama", agama);
+                cmd.Parameters.AddWithValue("@status_perkawinan", status_perkawinan);
+                cmd.Parameters.AddWithValue("@pekerjaan", pekerjaan);
+                cmd.Parameters.AddWithValue("@kewarganegaraan", kewarganegaraan);
+            }
+            
             cmd.ExecuteNonQuery();
             cn.Close();
         }
@@ -99,14 +135,28 @@ namespace Tubes3GUI
             string query = "SELECT * FROM biodata";
             var cmd = new MySqlConnector.MySqlCommand(query, cn);
             var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            if (decryptDatabase)
             {
-                Form1.dbBiodata.Add(new Orang(Enkripsi.EncryptOrDecrypt16DigitString(reader["NIK"].ToString()), Enkripsi.XorDecrypt(reader["nama"].ToString()),
+                while (reader.Read())
+                {
+                    Form1.dbBiodata.Add(new Orang(Enkripsi.EncryptOrDecrypt16DigitString(reader["NIK"].ToString()), Enkripsi.XorDecrypt(reader["nama"].ToString()),
                     Enkripsi.XorDecrypt(reader["tempat_lahir"].ToString()), Enkripsi.DateDecrypt(reader["tanggal_lahir"].ToString()),
                     Enkripsi.EncryptOrDecryptJenisKelamin(reader["jenis_kelamin"].ToString(), false), Enkripsi.XorDecrypt(reader["golongan_darah"].ToString()),
                     Enkripsi.XorDecrypt(reader["alamat"].ToString()), Enkripsi.XorDecrypt(reader["agama"].ToString()),
                     Enkripsi.EncryptOrDecryptStatusPerkawinan(reader["status_perkawinan"].ToString(), false), Enkripsi.XorDecrypt(reader["pekerjaan"].ToString()),
                     Enkripsi.XorDecrypt(reader["kewarganegaraan"].ToString())));
+                }
+            } else
+            {
+                while (reader.Read())
+                {
+                    Form1.dbBiodata.Add(new Orang(reader["NIK"].ToString(), reader["nama"].ToString(),
+                    reader["tempat_lahir"].ToString(), reader["tanggal_lahir"].ToString(),
+                    reader["jenis_kelamin"].ToString(), reader["golongan_darah"].ToString(),
+                    reader["alamat"].ToString(), reader["agama"].ToString(),
+                    reader["status_perkawinan"].ToString(), reader["pekerjaan"].ToString(),
+                    reader["kewarganegaraan"].ToString()));
+                }
             }
         }
 
@@ -125,7 +175,7 @@ namespace Tubes3GUI
         }
 
         //Buat masukin data sidik jari, testing purposes
-        public static string[] LoadFirst10ImagesAsBitmap(string folderPath)
+        public static string[] LoadImagesAsBitmap(string folderPath)
         {
             // Get all image files from the folder
             string[] imageFiles = Directory.GetFiles(folderPath, "*.*")

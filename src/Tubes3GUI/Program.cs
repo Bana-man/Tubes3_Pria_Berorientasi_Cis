@@ -39,7 +39,7 @@ namespace Tubes3GUI
 
             //// Memasukkan entri sidik jari ke database
             //string[] names = { "Emma Martinez", "Budi Budiman", "John Doe", "Daniel Rodriguez", "Jane Smith", "Sophia Garcia", "Michael Johnson", "Matthew Hernandez", "Isabella Gonzalez", "Emily Davis" };
-            //string[] fingerPrints = ConnectDB.LoadFirst10ImagesAsBitmap("C:\\Users\\irvan\\Documents\\uni\\smt 4\\stima\\tubes\\dataset");
+            //string[] fingerPrints = ConnectDB.LoadImagesAsBitmap("C:\\Users\\irvan\\Documents\\uni\\smt 4\\stima\\tubes\\dataset");
 
             //for (int i = 0; i < fingerPrints.Length; i++)
             //{
